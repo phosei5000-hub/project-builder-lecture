@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 로또 번호 추천기</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "맑은 고딕", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.2);
+            text-align: center;
+            width: 500px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background: #ff9800;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #f57c00;
+            transform: scale(1.05);
+        }
+
+        #numbers {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .ball {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            animation: pop .3s;
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        p {
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎰 로또 번호 추천</h1>
+
+    <button onclick="generateLotto()">
+        번호 추천받기
+    </button>
+
+    <div id="numbers"></div>
+
+    <p>행운을 빕니다! 🍀</p>
+</div>
+
+<script>
+function getColor(num){
+    if(num <= 10) return "#fbc400";
+    if(num <= 20) return "#69c8f2";
+    if(num <= 30) return "#ff7272";
+    if(num <= 40) return "#aaaaaa";
+    return "#7ac142";
+}
+
+function generateLotto(){
+
+    const numbers = [];
+
+    while(numbers.length < 6){
+        let n = Math.floor(Math.random() * 45) + 1;
+
+        if(!numbers.includes(n)){
+            numbers.push(n);
+        }
+    }
+
+    numbers.sort((a,b)=>a-b);
+
+    const result = document.getElementById("numbers");
+    result.innerHTML = "";
+
+    numbers.forEach(num=>{
+        const ball = document.createElement("div");
+        ball.className = "ball";
+        ball.style.background = getColor(num);
+        ball.textContent = num;
+        result.appendChild(ball);
+    });
+}
+</script>
+
+</body>
+</html>
