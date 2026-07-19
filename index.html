@@ -8,6 +8,10 @@
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --yellow: #ffd400;
+    --black: #1c1c1e;
+  }
   html, body {
     font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
       system-ui, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
@@ -33,7 +37,14 @@
     color:#1c1c1e;
     letter-spacing: -0.3px;
   }
-  header h1 span { color:#ff3b5c; }
+  header h1 span {
+    color:var(--black);
+    background:var(--yellow);
+    padding: 1px 8px;
+    border-radius:6px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
   header p {
     margin-top:8px;
     color:#8e8e93;
@@ -67,11 +78,11 @@
     white-space:nowrap;
     transition: 0.15s;
   }
-  .tab-btn:hover { border-color:#ff3b5c; color:#ff3b5c; }
+  .tab-btn:hover { border-color:var(--yellow); color:var(--black); }
   .tab-btn.active {
-    background:#fff0f3;
-    color:#ff3b5c;
-    border-color:#ffb9c6;
+    background:var(--black);
+    color:var(--yellow);
+    border-color:var(--black);
   }
 
   main {
@@ -112,8 +123,8 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.02);
   }
   .product-card:hover {
-    border-color:#ffd1da;
-    box-shadow: 0 8px 20px rgba(255,59,92,0.10);
+    border-color:var(--yellow);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.10);
     transform: translateY(-2px);
   }
 
@@ -143,9 +154,9 @@
     color:#a0a0a5;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   }
-  .rank-badge.gold   { background:#fff3cd; color:#b8860b; }
+  .rank-badge.gold   { background:var(--yellow); color:var(--black); }
   .rank-badge.silver { background:#eef0f3; color:#7c7f87; }
-  .rank-badge.bronze { background:#fbe4d1; color:#b5651d; }
+  .rank-badge.bronze { background:var(--black); color:var(--yellow); }
 
   .info { padding: 12px 14px 16px; }
   .info .name {
@@ -161,10 +172,14 @@
     min-height: 2.7em;
   }
   .info .price {
-    margin-top:6px;
-    font-size:12.5px;
+    display:inline-block;
+    margin-top:7px;
+    font-size:12px;
     font-weight:700;
-    color:#ff3b5c;
+    color:var(--yellow);
+    background:var(--black);
+    padding:3px 8px;
+    border-radius:6px;
   }
 
   footer {
