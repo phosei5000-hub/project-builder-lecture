@@ -4,82 +4,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>돈키호테 쇼핑 랭킹 | 여행 전 필수 체크</title>
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:"맑은 고딕","Apple SD Gothic Neo",sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+      system-ui, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  }
   body {
-    background:#0f1220;
-    color:#f2f2f2;
-    min-height:100vh;
+    background:#f3f3f5;
+    color:#1c1c1e;
+  }
+
+  .app {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background:#ffffff;
+  }
+  @media (min-width: 640px) {
+    .app {
+      min-height: calc(100vh - 48px);
+      margin: 24px auto;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
   }
 
   header {
-    background: linear-gradient(135deg, #1a1f3c, #2d1b4e);
-    padding: 40px 20px 30px;
+    padding: 32px 24px 20px;
     text-align:center;
-    border-bottom: 3px solid #ffd400;
+    border-bottom: 1px solid #f0f0f2;
   }
   header h1 {
-    font-size: 28px;
-    color:#ffd400;
-    letter-spacing: -0.5px;
+    font-size: 22px;
+    font-weight: 800;
+    color:#1c1c1e;
+    letter-spacing: -0.3px;
   }
-  header h1 span { color:#ff3d81; }
+  header h1 span { color:#ff3b5c; }
   header p {
-    margin-top:10px;
-    color:#c7c7d9;
-    font-size:14px;
+    margin-top:8px;
+    color:#8e8e93;
+    font-size:13px;
+    line-height:1.5;
   }
 
   .tabs {
     display:flex;
     gap:8px;
     overflow-x:auto;
-    padding: 16px 16px 8px;
+    padding: 14px 16px;
     position: sticky;
     top:0;
-    background:#0f1220;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
     z-index:10;
-    border-bottom:1px solid #2a2f4a;
+    border-bottom:1px solid #f0f0f2;
+    scrollbar-width: none;
   }
-  .tabs::-webkit-scrollbar { height:4px; }
+  .tabs::-webkit-scrollbar { display:none; }
   .tab-btn {
     flex:0 0 auto;
-    padding:10px 16px;
+    padding:9px 15px;
     border-radius:20px;
-    border:1px solid #383e63;
-    background:#1a1f3c;
-    color:#d4d4e4;
-    font-size:14px;
+    border:1px solid #ececee;
+    background:#f7f7f8;
+    color:#6e6e73;
+    font-size:13.5px;
+    font-weight:600;
     cursor:pointer;
     white-space:nowrap;
-    transition:0.2s;
+    transition: 0.15s;
   }
-  .tab-btn:hover { border-color:#ffd400; }
+  .tab-btn:hover { border-color:#ff3b5c; color:#ff3b5c; }
   .tab-btn.active {
-    background:#ffd400;
-    color:#1a1f3c;
-    font-weight:bold;
-    border-color:#ffd400;
+    background:#fff0f3;
+    color:#ff3b5c;
+    border-color:#ffb9c6;
   }
 
   main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px 16px 60px;
+    padding: 20px 20px 60px;
   }
 
   .category-title {
-    font-size:18px;
-    margin: 10px 4px 16px;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    gap:8px;
+    font-size:19px;
+    font-weight:800;
+    margin: 4px 2px 4px;
+    color:#1c1c1e;
   }
-  .category-title small {
-    font-size:12px;
-    color:#8a8fb0;
-    font-weight:normal;
+  .category-sub {
+    font-size:12.5px;
+    color:#a0a0a5;
+    margin: 0 2px 18px;
   }
 
   .ranking-list {
@@ -92,87 +112,94 @@
     display:flex;
     align-items:center;
     gap:14px;
-    background:#1a1f3c;
-    border:1px solid #2a2f4a;
-    border-radius:14px;
+    background:#ffffff;
+    border:1px solid #f0f0f2;
+    border-radius:16px;
     padding:14px;
     cursor:pointer;
     transition: 0.15s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
   }
   .product-card:hover {
-    border-color:#ff3d81;
-    transform: translateY(-2px);
+    border-color:#ffd1da;
+    box-shadow: 0 4px 14px rgba(255,59,92,0.08);
+    transform: translateY(-1px);
   }
 
   .rank-badge {
     flex:0 0 auto;
-    width:36px;
-    height:36px;
+    width:32px;
+    height:32px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-weight:bold;
-    font-size:15px;
-    background:#2a2f4a;
-    color:#c7c7d9;
+    font-weight:800;
+    font-size:14px;
+    background:#f5f5f7;
+    color:#a0a0a5;
   }
-  .rank-badge.gold   { background:#ffd400; color:#1a1f3c; }
-  .rank-badge.silver { background:#d9d9e6; color:#1a1f3c; }
-  .rank-badge.bronze { background:#e0995c; color:#1a1f3c; }
+  .rank-badge.gold   { background:#fff3cd; color:#b8860b; }
+  .rank-badge.silver { background:#eef0f3; color:#7c7f87; }
+  .rank-badge.bronze { background:#fbe4d1; color:#b5651d; }
 
   .thumb {
     flex:0 0 auto;
-    width:52px;
-    height:52px;
-    border-radius:10px;
-    background:#2a2f4a;
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    background:#f7f7f8;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:26px;
+    font-size:24px;
   }
 
   .info { flex:1; min-width:0; }
   .info .name {
-    font-size:15px;
-    font-weight:600;
-    color:#fff;
+    font-size:14.5px;
+    font-weight:700;
+    color:#1c1c1e;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
   }
   .info .price {
-    margin-top:4px;
-    font-size:13px;
-    color:#ffd400;
+    margin-top:3px;
+    font-size:12.5px;
+    font-weight:600;
+    color:#ff3b5c;
   }
 
-  .chevron { color:#5a5f80; font-size:18px; }
+  .chevron { color:#d1d1d6; font-size:18px; }
 
   footer {
     text-align:center;
-    padding:24px;
-    color:#5a5f80;
-    font-size:12px;
+    padding:20px 24px 28px;
+    color:#c4c4c8;
+    font-size:11.5px;
+    line-height:1.6;
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>돈<span>키호테</span> 쇼핑 랭킹</h1>
-  <p>일본 여행 전, 사람들이 가장 많이 사오는 아이템을 카테고리별로 확인하세요</p>
-</header>
+<div class="app">
+  <header>
+    <h1>돈<span>키호테</span> 쇼핑 랭킹</h1>
+    <p>일본 여행 전, 사람들이 가장 많이 사오는 아이템을<br>카테고리별로 확인하세요</p>
+  </header>
 
-<div class="tabs" id="tabs"></div>
+  <div class="tabs" id="tabs"></div>
 
-<main>
-  <div class="category-title" id="categoryTitle"></div>
-  <div class="ranking-list" id="rankingList"></div>
-</main>
+  <main>
+    <div class="category-title" id="categoryTitle"></div>
+    <div class="category-sub" id="categorySub"></div>
+    <div class="ranking-list" id="rankingList"></div>
+  </main>
 
-<footer>본 사이트는 여행자를 위한 비공식 참고 정보이며, 실제 매장 재고·가격과 다를 수 있습니다.</footer>
+  <footer>본 사이트는 여행자를 위한 비공식 참고 정보이며, 실제 매장 재고·가격과 다를 수 있습니다.</footer>
+</div>
 
 <script>
 const categories = [
@@ -186,6 +213,13 @@ const categories = [
       { name: '킷캇 각종 한정판', priceMin: 300, priceMax: 700, thumb:'🍫', desc:'말차/사케/딸기 등 일본 한정 맛 킷캇' },
       { name: '자가리코', priceMin: 150, priceMax: 250, thumb:'🥔', desc:'컵 포테이토 스낵, 다양한 맛 존재' },
       { name: '베이크 치즈타르트', priceMin: 400, priceMax: 600, thumb:'🧀', desc:'모리나가의 진한 구운 치즈타르트 과자' },
+      { name: '포키 각종맛', priceMin: 150, priceMax: 350, thumb:'🥖', desc:'글리코의 스테디셀러 스틱 과자, 맛 종류 다양' },
+      { name: '하이츄', priceMin: 150, priceMax: 300, thumb:'🍬', desc:'쫄깃한 식감의 국민 젤리캔디, 한정판 맛 인기' },
+      { name: '우마이봉', priceMin: 50, priceMax: 100, thumb:'🌽', desc:'10엔대 초저가 콘스낵, 종류별로 모으는 재미' },
+      { name: '칼비 감자칩 한정판', priceMin: 200, priceMax: 400, thumb:'🍟', desc:'지역/시즌 한정 맛이 매력적인 감자칩' },
+      { name: '메이지 초콜릿 효과', priceMin: 250, priceMax: 400, thumb:'🍫', desc:'카카오 함량별로 즐기는 아몬드 초콜릿' },
+      { name: '리락쿠마 만쥬', priceMin: 500, priceMax: 900, thumb:'🐻', desc:'귀여운 캐릭터 패키지의 팥소 과자' },
+      { name: '야마자키 모찌롤', priceMin: 300, priceMax: 500, thumb:'🍥', desc:'편의점보다 저렴하게 살 수 있는 인기 디저트빵' },
     ]
   },
   {
@@ -198,6 +232,13 @@ const categories = [
       { name: 'DHC 딥클렌징오일', priceMin: 1500, priceMax: 2200, thumb:'🧴', desc:'모공 속 메이크업까지 지워주는 클렌징 오일' },
       { name: '비오레 UV 선크림', priceMin: 800, priceMax: 1100, thumb:'☀️', desc:'끈적임 없는 데일리 자외선 차단제' },
       { name: '센카 퍼펙트 휩', priceMin: 500, priceMax: 700, thumb:'🧼', desc:'풍성한 거품의 클렌징 폼, 세안 필수템' },
+      { name: '키스미 히로인메이크 마스카라', priceMin: 900, priceMax: 1300, thumb:'👁️', desc:'번짐 없이 오래가는 국민 마스카라' },
+      { name: '하다라보 고쿠쥰 화장수', priceMin: 700, priceMax: 1000, thumb:'💧', desc:'히알루론산 함유, 촉촉한 스킨 겸 로션' },
+      { name: '우테나 프리미엄 마스크팩', priceMin: 400, priceMax: 700, thumb:'🎭', desc:'가성비 좋은 시트 마스크, 대용량 구성' },
+      { name: '시세이도 UNO 헤어왁스', priceMin: 600, priceMax: 900, thumb:'💇', desc:'남성 스타일링 왁스로 인기 있는 제품' },
+      { name: '페어 아크네크림', priceMin: 500, priceMax: 800, thumb:'🩹', desc:'트러블 피부에 바르는 스팟 진정 크림' },
+      { name: '나이트민 아이크림', priceMin: 800, priceMax: 1100, thumb:'🌙', desc:'자기 전 바르는 눈가 집중 케어 크림' },
+      { name: '캔메이크 아이브로우 펜슬', priceMin: 600, priceMax: 800, thumb:'✏️', desc:'저렴한 가격 대비 발색이 좋은 눈썹 펜슬' },
     ]
   },
   {
@@ -209,7 +250,14 @@ const categories = [
       { name: '사론파스', priceMin: 500, priceMax: 800, thumb:'🩹', desc:'근육통 완화 파스, 얇고 밀착력 좋음' },
       { name: '용각산', priceMin: 900, priceMax: 1300, thumb:'🫙', desc:'목 관리용 가루약, 기침·목아픔에 애용' },
       { name: '파브론 골드', priceMin: 1200, priceMax: 1600, thumb:'🍯', desc:'감기약으로 유명한 시럽형 종합감기약' },
-      { name: '대웅 아이봉', priceMin: 600, priceMax: 900, thumb:'👁️', desc:'눈 세정액, 미세먼지·꽃가루 시즌 필수' },
+      { name: '스마일 아이드롭', priceMin: 500, priceMax: 800, thumb:'👁️', desc:'눈 피로·충혈 완화에 쓰는 인기 안약' },
+      { name: '세이로가시(정로환)', priceMin: 700, priceMax: 1100, thumb:'💊', desc:'복통·설사에 쓰는 일본 국민 상비약' },
+      { name: '오타이산', priceMin: 800, priceMax: 1200, thumb:'🌿', desc:'가루형 위장약, 속쓰림·소화불량에 효과적' },
+      { name: '카베진 코와', priceMin: 900, priceMax: 1400, thumb:'🥬', desc:'양배추 성분의 위장 보호 정장제' },
+      { name: '신비오페르민 정장제', priceMin: 900, priceMax: 1300, thumb:'🦠', desc:'장 건강을 위한 유산균 정장제' },
+      { name: '사카무케아', priceMin: 500, priceMax: 800, thumb:'💧', desc:'상처에 바르는 액체 밴드, 방수 코팅' },
+      { name: '트래베르민(멀미약)', priceMin: 500, priceMax: 800, thumb:'🚗', desc:'비행기·버스 이동 전 먹는 멀미약' },
+      { name: '대학목약', priceMin: 400, priceMax: 700, thumb:'👀', desc:'눈 피로 회복용 안약, 시원한 사용감' },
     ]
   },
   {
@@ -222,6 +270,13 @@ const categories = [
       { name: '수면 마스크', priceMin: 400, priceMax: 700, thumb:'🌙', desc:'비행기·숙소에서 유용한 차광 안대' },
       { name: '휴대용 우산(미니)', priceMin: 800, priceMax: 1500, thumb:'☂️', desc:'가볍고 튼튼한 3단 접이식 우산' },
       { name: '핫팩', priceMin: 300, priceMax: 600, thumb:'🔥', desc:'겨울철 필수, 붙이는 타입/흔드는 타입' },
+      { name: '메구리즘 온열 넥워머', priceMin: 500, priceMax: 800, thumb:'♨️', desc:'전자레인지로 데워쓰는 목 찜질팩' },
+      { name: '휴대용 손소독제 케이스', priceMin: 300, priceMax: 600, thumb:'🧴', desc:'가방에 걸고 다니는 미니 소독제 용기' },
+      { name: '여행용 지퍼백 파우치 세트', priceMin: 400, priceMax: 800, thumb:'👜', desc:'옷·세면도구 정리에 유용한 압축 파우치' },
+      { name: '발열 조끼', priceMin: 1500, priceMax: 3000, thumb:'🧥', desc:'겨울 여행 필수, 얇지만 따뜻한 방한용품' },
+      { name: '호텔용 실내 슬리퍼', priceMin: 500, priceMax: 900, thumb:'🩴', desc:'가볍게 접어 다니는 여행용 슬리퍼' },
+      { name: '휴대용 미니 체중계', priceMin: 700, priceMax: 1200, thumb:'⚖️', desc:'캐리어 무게 초과를 막아주는 필수템' },
+      { name: '마이크로화이버 타월', priceMin: 500, priceMax: 900, thumb:'🧻', desc:'빨리 마르고 가벼운 여행용 수건' },
     ]
   },
   {
@@ -234,6 +289,13 @@ const categories = [
       { name: '산토리 위스키 미니어처', priceMin: 500, priceMax: 1500, thumb:'🥃', desc:'가볍게 사가기 좋은 소용량 위스키' },
       { name: '유자슈', priceMin: 800, priceMax: 1400, thumb:'🍋', desc:'상큼한 유자 향의 리큐르' },
       { name: '지역 한정 사케', priceMin: 1000, priceMax: 3000, thumb:'🍶', desc:'지역별 한정판 사케, 선물용 인기템' },
+      { name: '논알콜 하이볼', priceMin: 150, priceMax: 250, thumb:'🧃', desc:'술 못 마시는 일행도 함께 즐기는 무알콜 음료' },
+      { name: '레몬사와 캔', priceMin: 150, priceMax: 280, thumb:'🍋', desc:'상큼하고 청량한 인기 츄하이 계열 캔' },
+      { name: '츄하이 각종맛', priceMin: 150, priceMax: 300, thumb:'🍹', desc:'과일 맛이 다양한 저도수 탄산 주류' },
+      { name: '카쿠 하이볼', priceMin: 150, priceMax: 250, thumb:'🥂', desc:'산토리 카쿠빙으로 만든 정통 하이볼 캔' },
+      { name: '니혼슈 미니병(300ml)', priceMin: 600, priceMax: 1200, thumb:'🍶', desc:'부담 없이 사가기 좋은 소용량 정종' },
+      { name: '우메슈 소다', priceMin: 200, priceMax: 350, thumb:'🫧', desc:'매실주에 탄산을 더한 상큼한 캔 음료' },
+      { name: '위스키 하이볼 페트병', priceMin: 400, priceMax: 700, thumb:'🧉', desc:'대용량으로 나눠 마시기 좋은 하이볼' },
     ]
   },
   {
@@ -246,12 +308,20 @@ const categories = [
       { name: '산리오 캐릭터 문구', priceMin: 500, priceMax: 1200, thumb:'🎀', desc:'헬로키티 등 산리오 캐릭터 상품' },
       { name: '포켓몬 인형뽑기/굿즈', priceMin: 700, priceMax: 2000, thumb:'⭐', desc:'포켓몬 한정 굿즈, 매장마다 재고 상이' },
       { name: '돈키호테 오리지널 굿즈', priceMin: 600, priceMax: 1500, thumb:'🐧', desc:'펭귄 마스코트 돈펜 관련 오리지널 상품' },
+      { name: '짱구는못말려 굿즈', priceMin: 500, priceMax: 1300, thumb:'✏️', desc:'국민 캐릭터 짱구의 문구·소품 라인업' },
+      { name: '도라에몽 미니피규어', priceMin: 600, priceMax: 1400, thumb:'🔵', desc:'디테일 살아있는 인기 캐릭터 피규어' },
+      { name: '원피스 캐릭터 열쇠고리', priceMin: 400, priceMax: 900, thumb:'🗝️', desc:'애니메이션 팬 사이에서 인기 있는 굿즈' },
+      { name: '스누피 문구 세트', priceMin: 500, priceMax: 1200, thumb:'🐶', desc:'심플하고 예쁜 디자인의 피너츠 문구' },
+      { name: '리락쿠마 인형', priceMin: 900, priceMax: 2200, thumb:'🐻', desc:'포근한 감성의 힐링 캐릭터 인형' },
+      { name: '귀멸의칼날 굿즈', priceMin: 600, priceMax: 1800, thumb:'⚔️', desc:'애니메이션 인기에 힘입은 콜라보 상품' },
+      { name: '스타워즈 콜라보 굿즈', priceMin: 800, priceMax: 2500, thumb:'🚀', desc:'일본 한정으로 나오는 콜라보 상품' },
     ]
   },
 ];
 
 const tabsEl = document.getElementById('tabs');
 const titleEl = document.getElementById('categoryTitle');
+const subEl = document.getElementById('categorySub');
 const listEl = document.getElementById('rankingList');
 
 function renderTabs(activeId) {
@@ -268,7 +338,8 @@ function renderTabs(activeId) {
 
 function showCategory(id) {
   const category = categories.find(c => c.id === id);
-  titleEl.innerHTML = `${category.emoji} ${category.name} TOP ${category.products.length} <small>많이 사가는 순</small>`;
+  titleEl.textContent = `${category.emoji} ${category.name} 랭킹`;
+  subEl.textContent = `총 ${category.products.length}개 · 많이 사가는 순위대로 정리했어요`;
 
   listEl.innerHTML = category.products.map((p, i) => {
     const rank = i + 1;
