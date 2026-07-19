@@ -175,6 +175,98 @@
     line-height:1.6;
     border-top: 1px solid #f5f5f6;
   }
+
+  .modal-backdrop {
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(20,20,22,0.45);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:100;
+  }
+  .modal-backdrop.open { display:flex; }
+
+  .modal {
+    position:relative;
+    width:100%;
+    max-width:400px;
+    max-height:88vh;
+    overflow-y:auto;
+    background:#ffffff;
+    border-radius:22px;
+    padding:28px 24px 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+
+  .modal-close {
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:none;
+    background:#f5f5f7;
+    color:#8e8e93;
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .modal-close:hover { background:#ececee; color:#1c1c1e; }
+
+  .modal-rank {
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    color:#ff3b5c;
+    background:#fff0f3;
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:14px;
+  }
+
+  .modal-thumb {
+    width:120px;
+    height:120px;
+    margin:0 auto 18px;
+    border-radius:20px;
+    background: linear-gradient(160deg,#f7f7f8,#f1f1f3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:64px;
+  }
+
+  .modal-name {
+    font-size:19px;
+    font-weight:800;
+    color:#1c1c1e;
+    text-align:center;
+    line-height:1.4;
+  }
+
+  .modal-price {
+    text-align:center;
+    font-size:17px;
+    font-weight:800;
+    color:#ff3b5c;
+    margin-top:8px;
+  }
+
+  .modal-desc {
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid #f0f0f2;
+    font-size:14px;
+    color:#6e6e73;
+    line-height:1.6;
+    text-align:center;
+  }
 </style>
 </head>
 <body>
@@ -194,6 +286,17 @@
   </main>
 
   <footer>본 사이트는 여행자를 위한 비공식 참고 정보이며, 실제 매장 재고·가격과 다를 수 있습니다.</footer>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="닫기">✕</button>
+    <div class="modal-rank" id="modalRank"></div>
+    <div class="modal-thumb" id="modalThumb"></div>
+    <div class="modal-name" id="modalName"></div>
+    <div class="modal-price" id="modalPrice"></div>
+    <div class="modal-desc" id="modalDesc"></div>
+  </div>
 </div>
 
 <script>
@@ -318,6 +421,48 @@ const tabsEl = document.getElementById('tabs');
 const titleEl = document.getElementById('categoryTitle');
 const subEl = document.getElementById('categorySub');
 const listEl = document.getElementById('rankingList');
+
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalRank = document.getElementById('modalRank');
+const modalThumb = document.getElementById('modalThumb');
+const modalName = document.getElementById('modalName');
+const modalPrice = document.getElementById('modalPrice');
+const modalDesc = document.getElementById('modalDesc');
+const modalClose = document.getElementById('modalClose');
+
+function openModal(catId, idx) {
+  const category = categories.find(c => c.id === catId);
+  const p = category.products[idx];
+  const rank = idx + 1;
+
+  modalRank.textContent = `${category.emoji} ${category.name} ${rank}위`;
+  modalThumb.textContent = p.thumb;
+  modalName.textContent = p.name;
+  modalPrice.textContent = `¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}`;
+  modalDesc.textContent = p.desc;
+
+  modalBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modalBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', (e) => {
+  if (e.target === modalBackdrop) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+listEl.addEventListener('click', (e) => {
+  const card = e.target.closest('.product-card');
+  if (!card) return;
+  openModal(card.dataset.cat, Number(card.dataset.idx));
+});
 
 function renderTabs(activeId) {
   tabsEl.innerHTML = categories.map(c => `
