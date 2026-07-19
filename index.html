@@ -267,6 +267,142 @@
     line-height:1.6;
     text-align:center;
   }
+
+  /* add-to-cart control inside product modal */
+  .modal-cart-control { margin-top:20px; }
+  .add-cart-btn {
+    width:100%;
+    padding:14px;
+    border-radius:14px;
+    border:none;
+    background:#ff3b5c;
+    color:#fff;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+  }
+  .add-cart-btn:hover { background:#e8264a; }
+
+  .modal-qty-stepper {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+    padding:10px;
+    border-radius:14px;
+    background:#f7f7f8;
+  }
+  .modal-qty-stepper button {
+    width:36px; height:36px; border-radius:50%;
+    border:none; background:#fff; color:#1c1c1e;
+    font-size:18px; font-weight:800; cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,0.1);
+  }
+  .modal-qty-stepper button:hover { color:#ff3b5c; }
+  .modal-qty-stepper .qty-num { font-size:16px; font-weight:800; min-width:24px; text-align:center; }
+  .modal-qty-hint { text-align:center; font-size:12px; color:#a0a0a5; margin-top:8px; }
+
+  /* floating cart button */
+  .cart-fab {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border:none;
+    background:#ff3b5c;
+    color:#fff;
+    font-size:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow: 0 8px 20px rgba(255,59,92,0.35);
+    z-index:90;
+  }
+  .cart-fab:hover { background:#e8264a; }
+
+  .cart-badge {
+    position:absolute;
+    top:-4px;
+    right:-4px;
+    min-width:20px;
+    height:20px;
+    padding:0 5px;
+    border-radius:10px;
+    background:#1c1c1e;
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #fff;
+  }
+
+  /* cart panel */
+  .cart-modal { max-width:440px; }
+  .cart-header { font-size:18px; font-weight:800; margin-bottom:16px; padding-right:26px; }
+  .cart-empty { text-align:center; color:#a0a0a5; font-size:13.5px; padding:50px 10px; }
+
+  .cart-item {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid #f5f5f6;
+  }
+  .cart-item .thumb {
+    width:48px; height:48px; border-radius:12px;
+    background:linear-gradient(160deg,#f7f7f8,#f1f1f3);
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; flex:0 0 auto;
+  }
+  .cart-item .info { flex:1; min-width:0; }
+  .cart-item .name {
+    font-size:13.5px; font-weight:700; color:#1c1c1e;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .cart-item .unit-price { font-size:12px; color:#a0a0a5; margin-top:2px; }
+
+  .qty-stepper { display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+  .qty-stepper button {
+    width:26px; height:26px; border-radius:50%;
+    border:1px solid #ececee; background:#f7f7f8; color:#1c1c1e;
+    font-size:14px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .qty-stepper button:hover { border-color:#ff3b5c; color:#ff3b5c; }
+  .qty-stepper .qty-num { min-width:18px; text-align:center; font-size:13.5px; font-weight:700; }
+
+  .cart-item .remove-btn {
+    flex:0 0 auto;
+    background:none; border:none; color:#c4c4c8; font-size:16px; cursor:pointer; padding:4px;
+  }
+  .cart-item .remove-btn:hover { color:#ff3b5c; }
+
+  .cart-footer { margin-top:16px; padding-top:16px; border-top:1px solid #f0f0f2; }
+  .cart-footer .total-row {
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:14px; color:#6e6e73; margin-bottom:4px;
+  }
+  .cart-footer .total-row.price { font-size:16px; font-weight:800; color:#1c1c1e; }
+  .cart-footer .total-row.price span:last-child { color:#ff3b5c; }
+
+  .cart-clear-btn {
+    margin-top:14px;
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #ececee;
+    background:#fff;
+    color:#8e8e93;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .cart-clear-btn:hover { border-color:#ff3b5c; color:#ff3b5c; }
 </style>
 </head>
 <body>
@@ -296,6 +432,25 @@
     <div class="modal-name" id="modalName"></div>
     <div class="modal-price" id="modalPrice"></div>
     <div class="modal-desc" id="modalDesc"></div>
+    <div class="modal-cart-control" id="modalCartControl"></div>
+  </div>
+</div>
+
+<button class="cart-fab" id="cartFab" aria-label="쇼핑리스트 열기">
+  🛍️
+  <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+</button>
+
+<div class="modal-backdrop" id="cartBackdrop">
+  <div class="modal cart-modal">
+    <button class="modal-close" id="cartClose" aria-label="닫기">✕</button>
+    <div class="cart-header">🛍️ 내 쇼핑리스트</div>
+    <div id="cartList"></div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="total-row"><span id="cartTotalCount"></span><span></span></div>
+      <div class="total-row price"><span>예상 총액</span><span id="cartTotalPrice"></span></div>
+      <button class="cart-clear-btn" id="cartClearBtn">쇼핑리스트 비우기</button>
+    </div>
   </div>
 </div>
 
@@ -428,18 +583,107 @@ const modalThumb = document.getElementById('modalThumb');
 const modalName = document.getElementById('modalName');
 const modalPrice = document.getElementById('modalPrice');
 const modalDesc = document.getElementById('modalDesc');
+const modalCartControl = document.getElementById('modalCartControl');
 const modalClose = document.getElementById('modalClose');
+
+const cartFab = document.getElementById('cartFab');
+const cartBadge = document.getElementById('cartBadge');
+const cartBackdrop = document.getElementById('cartBackdrop');
+const cartClose = document.getElementById('cartClose');
+const cartList = document.getElementById('cartList');
+const cartFooter = document.getElementById('cartFooter');
+const cartTotalCount = document.getElementById('cartTotalCount');
+const cartTotalPrice = document.getElementById('cartTotalPrice');
+const cartClearBtn = document.getElementById('cartClearBtn');
+
+let currentModalKey = null;
+
+// ---------- cart storage ----------
+const CART_KEY = 'donki-cart';
+
+function loadCart() {
+  try {
+    return JSON.parse(localStorage.getItem(CART_KEY)) || {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+let cart = loadCart();
+
+function keyOf(catId, idx) { return `${catId}::${idx}`; }
+
+function getProduct(catId, idx) {
+  const category = categories.find(c => c.id === catId);
+  return { category, product: category.products[idx] };
+}
+
+function getQty(catId, idx) {
+  return cart[keyOf(catId, idx)] || 0;
+}
+
+function setQty(catId, idx, qty) {
+  const key = keyOf(catId, idx);
+  if (qty <= 0) {
+    delete cart[key];
+  } else {
+    cart[key] = qty;
+  }
+  saveCart(cart);
+  renderCartBadge();
+  if (currentModalKey === key) renderModalCartControl(catId, idx);
+  if (cartBackdrop.classList.contains('open')) renderCartPanel();
+}
+
+function cartTotalQty() {
+  return Object.values(cart).reduce((sum, q) => sum + q, 0);
+}
+
+function renderCartBadge() {
+  const total = cartTotalQty();
+  cartBadge.textContent = total;
+  cartBadge.style.display = total > 0 ? 'flex' : 'none';
+}
+
+// ---------- product detail modal ----------
+function renderModalCartControl(catId, idx) {
+  const qty = getQty(catId, idx);
+  if (qty <= 0) {
+    modalCartControl.innerHTML = `<button class="add-cart-btn" id="addCartBtn">🛍️ 장바구니에 담기</button>`;
+    document.getElementById('addCartBtn').addEventListener('click', () => {
+      setQty(catId, idx, 1);
+    });
+  } else {
+    modalCartControl.innerHTML = `
+      <div class="modal-qty-stepper">
+        <button data-action="dec">−</button>
+        <span class="qty-num">${qty}</span>
+        <button data-action="inc">+</button>
+      </div>
+      <div class="modal-qty-hint">쇼핑리스트에 ${qty}개 담겨 있어요</div>
+    `;
+    modalCartControl.querySelector('[data-action="dec"]').addEventListener('click', () => setQty(catId, idx, qty - 1));
+    modalCartControl.querySelector('[data-action="inc"]').addEventListener('click', () => setQty(catId, idx, qty + 1));
+  }
+}
 
 function openModal(catId, idx) {
   const category = categories.find(c => c.id === catId);
   const p = category.products[idx];
   const rank = idx + 1;
 
+  currentModalKey = keyOf(catId, idx);
+
   modalRank.textContent = `${category.emoji} ${category.name} ${rank}위`;
   modalThumb.textContent = p.thumb;
   modalName.textContent = p.name;
   modalPrice.textContent = `¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}`;
   modalDesc.textContent = p.desc;
+  renderModalCartControl(catId, idx);
 
   modalBackdrop.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -447,15 +691,13 @@ function openModal(catId, idx) {
 
 function closeModal() {
   modalBackdrop.classList.remove('open');
-  document.body.style.overflow = '';
+  currentModalKey = null;
+  if (!cartBackdrop.classList.contains('open')) document.body.style.overflow = '';
 }
 
 modalClose.addEventListener('click', closeModal);
 modalBackdrop.addEventListener('click', (e) => {
   if (e.target === modalBackdrop) closeModal();
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeModal();
 });
 
 listEl.addEventListener('click', (e) => {
@@ -463,6 +705,100 @@ listEl.addEventListener('click', (e) => {
   if (!card) return;
   openModal(card.dataset.cat, Number(card.dataset.idx));
 });
+
+// ---------- cart panel ----------
+function renderCartPanel() {
+  const keys = Object.keys(cart);
+
+  if (keys.length === 0) {
+    cartList.innerHTML = `<div class="cart-empty">아직 담은 상품이 없어요.<br>마음에 드는 상품을 눌러 담아보세요!</div>`;
+    cartFooter.style.display = 'none';
+    return;
+  }
+
+  let totalMin = 0, totalMax = 0, totalQty = 0;
+
+  cartList.innerHTML = keys.map(key => {
+    const [catId, idxStr] = key.split('::');
+    const idx = Number(idxStr);
+    const { product: p } = getProduct(catId, idx);
+    const qty = cart[key];
+    totalMin += p.priceMin * qty;
+    totalMax += p.priceMax * qty;
+    totalQty += qty;
+
+    return `
+      <div class="cart-item" data-cat="${catId}" data-idx="${idx}">
+        <div class="thumb">${p.thumb}</div>
+        <div class="info">
+          <div class="name">${p.name}</div>
+          <div class="unit-price">¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}</div>
+        </div>
+        <div class="qty-stepper">
+          <button data-action="dec">−</button>
+          <span class="qty-num">${qty}</span>
+          <button data-action="inc">+</button>
+        </div>
+        <button class="remove-btn" data-action="remove" aria-label="삭제">✕</button>
+      </div>
+    `;
+  }).join('');
+
+  cartTotalCount.textContent = `담은 상품 ${totalQty}개`;
+  cartTotalPrice.textContent = `¥${totalMin.toLocaleString()} ~ ¥${totalMax.toLocaleString()}`;
+  cartFooter.style.display = 'block';
+}
+
+cartList.addEventListener('click', (e) => {
+  const item = e.target.closest('.cart-item');
+  const btn = e.target.closest('button');
+  if (!item || !btn) return;
+  const catId = item.dataset.cat;
+  const idx = Number(item.dataset.idx);
+  const action = btn.dataset.action;
+  const qty = getQty(catId, idx);
+
+  if (action === 'inc') setQty(catId, idx, qty + 1);
+  else if (action === 'dec') setQty(catId, idx, qty - 1);
+  else if (action === 'remove') setQty(catId, idx, 0);
+});
+
+cartClearBtn.addEventListener('click', () => {
+  if (!confirm('쇼핑리스트를 모두 비울까요?')) return;
+  cart = {};
+  saveCart(cart);
+  renderCartBadge();
+  renderCartPanel();
+  if (currentModalKey) {
+    const [catId, idxStr] = currentModalKey.split('::');
+    renderModalCartControl(catId, Number(idxStr));
+  }
+});
+
+function openCartPanel() {
+  renderCartPanel();
+  cartBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCartPanel() {
+  cartBackdrop.classList.remove('open');
+  if (!modalBackdrop.classList.contains('open')) document.body.style.overflow = '';
+}
+
+cartFab.addEventListener('click', openCartPanel);
+cartClose.addEventListener('click', closeCartPanel);
+cartBackdrop.addEventListener('click', (e) => {
+  if (e.target === cartBackdrop) closeCartPanel();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if (cartBackdrop.classList.contains('open')) closeCartPanel();
+  else if (modalBackdrop.classList.contains('open')) closeModal();
+});
+
+renderCartBadge();
 
 function renderTabs(activeId) {
   tabsEl.innerHTML = categories.map(c => `
