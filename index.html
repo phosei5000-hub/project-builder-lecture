@@ -13,33 +13,22 @@
       system-ui, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
   }
   body {
-    background:#f3f3f5;
+    background:#ffffff;
     color:#1c1c1e;
   }
 
   .app {
-    max-width: 480px;
+    max-width: 1280px;
     margin: 0 auto;
-    min-height: 100vh;
-    background:#ffffff;
-  }
-  @media (min-width: 640px) {
-    .app {
-      min-height: calc(100vh - 48px);
-      margin: 24px auto;
-      border-radius: 24px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-      overflow: hidden;
-    }
   }
 
   header {
-    padding: 32px 24px 20px;
+    padding: clamp(28px, 5vw, 44px) 24px 20px;
     text-align:center;
     border-bottom: 1px solid #f0f0f2;
   }
   header h1 {
-    font-size: 22px;
+    font-size: clamp(22px, 3vw, 30px);
     font-weight: 800;
     color:#1c1c1e;
     letter-spacing: -0.3px;
@@ -48,27 +37,26 @@
   header p {
     margin-top:8px;
     color:#8e8e93;
-    font-size:13px;
+    font-size:13.5px;
     line-height:1.5;
   }
 
   .tabs {
     display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
     gap:8px;
-    overflow-x:auto;
-    padding: 14px 16px;
+    padding: 16px 20px;
     position: sticky;
     top:0;
     background:rgba(255,255,255,0.92);
     backdrop-filter: blur(8px);
     z-index:10;
     border-bottom:1px solid #f0f0f2;
-    scrollbar-width: none;
   }
-  .tabs::-webkit-scrollbar { display:none; }
   .tab-btn {
     flex:0 0 auto;
-    padding:9px 15px;
+    padding:9px 16px;
     border-radius:20px;
     border:1px solid #ececee;
     background:#f7f7f8;
@@ -87,11 +75,11 @@
   }
 
   main {
-    padding: 20px 20px 60px;
+    padding: 24px 20px 60px;
   }
 
   .category-title {
-    font-size:19px;
+    font-size: clamp(18px, 2.2vw, 22px);
     font-weight:800;
     margin: 4px 2px 4px;
     color:#1c1c1e;
@@ -99,86 +87,93 @@
   .category-sub {
     font-size:12.5px;
     color:#a0a0a5;
-    margin: 0 2px 18px;
+    margin: 0 2px 20px;
   }
 
   .ranking-list {
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
+  @media (min-width: 520px)  { .ranking-list { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 820px)  { .ranking-list { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 1120px) { .ranking-list { grid-template-columns: repeat(5, 1fr); } }
 
   .product-card {
+    position: relative;
     display:flex;
-    align-items:center;
-    gap:14px;
+    flex-direction:column;
     background:#ffffff;
     border:1px solid #f0f0f2;
-    border-radius:16px;
-    padding:14px;
+    border-radius:18px;
+    overflow:hidden;
     cursor:pointer;
     transition: 0.15s;
     box-shadow: 0 1px 2px rgba(0,0,0,0.02);
   }
   .product-card:hover {
     border-color:#ffd1da;
-    box-shadow: 0 4px 14px rgba(255,59,92,0.08);
-    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(255,59,92,0.10);
+    transform: translateY(-2px);
+  }
+
+  .thumb {
+    width:100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(160deg,#f7f7f8,#f1f1f3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: clamp(42px, 9vw, 64px);
   }
 
   .rank-badge {
-    flex:0 0 auto;
-    width:32px;
-    height:32px;
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:28px;
+    height:28px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
     font-weight:800;
-    font-size:14px;
-    background:#f5f5f7;
+    font-size:13px;
+    background:rgba(255,255,255,0.92);
     color:#a0a0a5;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   }
   .rank-badge.gold   { background:#fff3cd; color:#b8860b; }
   .rank-badge.silver { background:#eef0f3; color:#7c7f87; }
   .rank-badge.bronze { background:#fbe4d1; color:#b5651d; }
 
-  .thumb {
-    flex:0 0 auto;
-    width:48px;
-    height:48px;
-    border-radius:12px;
-    background:#f7f7f8;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
-  }
-
-  .info { flex:1; min-width:0; }
+  .info { padding: 12px 14px 16px; }
   .info .name {
     font-size:14.5px;
     font-weight:700;
     color:#1c1c1e;
-    white-space:nowrap;
+    line-height:1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow:hidden;
-    text-overflow:ellipsis;
+    min-height: 2.7em;
   }
   .info .price {
-    margin-top:3px;
+    margin-top:6px;
     font-size:12.5px;
-    font-weight:600;
+    font-weight:700;
     color:#ff3b5c;
   }
 
-  .chevron { color:#d1d1d6; font-size:18px; }
-
   footer {
     text-align:center;
-    padding:20px 24px 28px;
+    padding:24px 24px 32px;
     color:#c4c4c8;
     font-size:11.5px;
     line-height:1.6;
+    border-top: 1px solid #f5f5f6;
   }
 </style>
 </head>
@@ -352,7 +347,6 @@ function showCategory(id) {
           <div class="name">${p.name}</div>
           <div class="price">¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}</div>
         </div>
-        <div class="chevron">›</div>
       </div>
     `;
   }).join('');
