@@ -472,24 +472,29 @@
 </div>
 
 <script>
+// 여행 매체·블로그·SNS의 "돈키호테 추천템" 언급 빈도를 조사해 순위화한 실제 데이터.
+// 가격은 각 상품의 아마존재팬(amazon.co.jp) 실판매가를 기준으로 조사한 값(2026-07 기준, 변동 가능).
 const categories = [
   {
     id: 'snack',
     name: '과자/디저트',
     emoji: '🍬',
     products: [
-      { name: '도쿄 바나나', priceMin: 800, priceMax: 1200, thumb:'🍌', desc:'도쿄 대표 기념 과자, 바나나 크림 카스텔라' },
-      { name: '시로이 코이비토', priceMin: 1000, priceMax: 1600, thumb:'🍪', desc:'홋카이도 대표 화이트 초콜릿 랑그드샤' },
-      { name: '킷캇 각종 한정판', priceMin: 300, priceMax: 700, thumb:'🍫', desc:'말차/사케/딸기 등 일본 한정 맛 킷캇' },
-      { name: '자가리코', priceMin: 150, priceMax: 250, thumb:'🥔', desc:'컵 포테이토 스낵, 다양한 맛 존재' },
-      { name: '베이크 치즈타르트', priceMin: 400, priceMax: 600, thumb:'🧀', desc:'모리나가의 진한 구운 치즈타르트 과자' },
-      { name: '포키 각종맛', priceMin: 150, priceMax: 350, thumb:'🥖', desc:'글리코의 스테디셀러 스틱 과자, 맛 종류 다양' },
-      { name: '하이츄', priceMin: 150, priceMax: 300, thumb:'🍬', desc:'쫄깃한 식감의 국민 젤리캔디, 한정판 맛 인기' },
-      { name: '우마이봉', priceMin: 50, priceMax: 100, thumb:'🌽', desc:'10엔대 초저가 콘스낵, 종류별로 모으는 재미' },
-      { name: '칼비 감자칩 한정판', priceMin: 200, priceMax: 400, thumb:'🍟', desc:'지역/시즌 한정 맛이 매력적인 감자칩' },
-      { name: '메이지 초콜릿 효과', priceMin: 250, priceMax: 400, thumb:'🍫', desc:'카카오 함량별로 즐기는 아몬드 초콜릿' },
-      { name: '리락쿠마 만쥬', priceMin: 500, priceMax: 900, thumb:'🐻', desc:'귀여운 캐릭터 패키지의 팥소 과자' },
-      { name: '야마자키 모찌롤', priceMin: 300, priceMax: 500, thumb:'🍥', desc:'편의점보다 저렴하게 살 수 있는 인기 디저트빵' },
+      { name: '킷캣 미니 (오토나노아마사 고이맛차)', price: 560, thumb:'🍵', desc:'지역/시즌 한정판이 다양한 대표 기념품 과자' },
+      { name: '포키 (코이후카미 말차)', price: 190, thumb:'🥢', desc:'편의점보다 종류가 다양한 일본 한정 맛 포키' },
+      { name: '부르봉 루만도', price: 170, thumb:'🍫', desc:'"돈키호테 꿀템 과자"로 자주 소개되는 스테디셀러' },
+      { name: '훈와리 메이진 (홋카이도 치즈모찌)', price: 270, thumb:'🧀', desc:'모찌 스낵, 치즈맛 등 술안주용으로도 인기' },
+      { name: '알포트 미니 초콜릿', price: 140, thumb:'🍫', desc:'시부야점엔 전용 코너가 있을 정도로 인기' },
+      { name: '카루비 포테토칩스 (우스시오)', price: 140, thumb:'🥔', desc:'일본 감자칩 스테디셀러' },
+      { name: 'UHA 코구미 (과즙 젤리)', price: 170, thumb:'🍬', desc:'쫄깃한 식감으로 유명한 과즙 100% 구미' },
+      { name: '메이지 키노코노야마', price: 200, thumb:'🍄', desc:'다케노코노사토와 함께 아이들에게 인기' },
+      { name: '정열가격(PB) 곤약젤리·스낵', price: 150, thumb:'🍡', desc:'돈키호테 자체 브랜드 가성비템' },
+      { name: '시로이 코이비토 (12枚入)', price: 1040, thumb:'🍪', desc:'홋카이도 대표, 선물용 프리미엄 과자' },
+      { name: '모리나가 초코파이 (엔젤파이)', price: 480, thumb:'🥮', desc:'저렴한 가격, 레트로 패키지가 매력' },
+      { name: '모리나가 초코볼', price: 100, thumb:'🍫', desc:'편의점·돈키호테 한정 초저가 PB급 과자' },
+      { name: '메이지 초콜릿 효과 (아몬드)', price: 300, thumb:'🍫', desc:'카카오 함량별로 즐기는 건강 지향 초콜릿' },
+      { name: '부르봉 나무꾼 그루터기 비스킷', price: 520, thumb:'🍪', desc:'칼슘 함유, 귀여운 그루터기 모양 비스킷' },
+      { name: '카스가이 그린마메 (와사비콩)', price: 110, thumb:'🫘', desc:'짭짤한 안주용으로 인기인 와사비콩 스낵' },
     ]
   },
   {
@@ -497,18 +502,16 @@ const categories = [
     name: '뷰티/화장품',
     emoji: '💄',
     products: [
-      { name: '시세이도 센카 퍼펙트휩 폼클렌징', priceMin: 700, priceMax: 900, image:'https://drive.google.com/file/d/1ZCQeRst-E1BAVFl6gYsIKWeNaiaFNHH0/view?usp=drive_link', desc:'가성비 최고 인기 볼터치, 색감이 자연스러움' },
-      { name: '멘소래담 아쿠아 립밤', priceMin: 300, priceMax: 500, thumb:'💋', desc:'촉촉함이 오래가는 국민 립밤' },
-      { name: 'DHC 딥클렌징오일', priceMin: 1500, priceMax: 2200, thumb:'🧴', desc:'모공 속 메이크업까지 지워주는 클렌징 오일' },
-      { name: '비오레 UV 선크림', priceMin: 800, priceMax: 1100, thumb:'☀️', desc:'끈적임 없는 데일리 자외선 차단제' },
-      { name: '센카 퍼펙트 휩', priceMin: 500, priceMax: 700, thumb:'🧼', desc:'풍성한 거품의 클렌징 폼, 세안 필수템' },
-      { name: '키스미 히로인메이크 마스카라', priceMin: 900, priceMax: 1300, thumb:'👁️', desc:'번짐 없이 오래가는 국민 마스카라' },
-      { name: '하다라보 고쿠쥰 화장수', priceMin: 700, priceMax: 1000, thumb:'💧', desc:'히알루론산 함유, 촉촉한 스킨 겸 로션' },
-      { name: '우테나 프리미엄 마스크팩', priceMin: 400, priceMax: 700, thumb:'🎭', desc:'가성비 좋은 시트 마스크, 대용량 구성' },
-      { name: '시세이도 UNO 헤어왁스', priceMin: 600, priceMax: 900, thumb:'💇', desc:'남성 스타일링 왁스로 인기 있는 제품' },
-      { name: '페어 아크네크림', priceMin: 500, priceMax: 800, thumb:'🩹', desc:'트러블 피부에 바르는 스팟 진정 크림' },
-      { name: '나이트민 아이크림', priceMin: 800, priceMax: 1100, thumb:'🌙', desc:'자기 전 바르는 눈가 집중 케어 크림' },
-      { name: '캔메이크 아이브로우 펜슬', priceMin: 600, priceMax: 800, thumb:'✏️', desc:'저렴한 가격 대비 발색이 좋은 눈썹 펜슬' },
+      { name: '모공나데시코 오코메노마스크', price: 710, thumb:'😷', desc:'전 세계 누적 4억 장 판매, 쌀 에센스 마스크팩' },
+      { name: '비오레 UV 아스리즘', price: 1650, thumb:'☀️', desc:'백탁 없는 선케어로 여러 자료 공통 1순위' },
+      { name: '나메라카혼포 두유 폼클렌징', price: 660, thumb:'🧼', desc:'저렴하고 순한 세정력으로 스테디 추천' },
+      { name: '니베아 리치케어&컬러 립', price: 850, thumb:'💋', desc:'보습+톤업 효과, 선물용으로 인기' },
+      { name: '캔메이크 톤업 베이스', price: 700, thumb:'💧', desc:'가성비 브랜드 대표 베이스 아이템' },
+      { name: '원정요(Wonjungyo) 마스카라', price: 1690, thumb:'👁️', desc:'최근 SNS에서 품절 대란급 인기' },
+      { name: '시세이도 마쉐리 샴푸', price: 900, thumb:'🧴', desc:'향 좋은 헤어케어로 인기인 시세이도 라인' },
+      { name: '그린벨 눈썹 트위저', price: 990, thumb:'✂️', desc:'미세모까지 정리되는 잡화형 뷰티템' },
+      { name: 'S-labo 레티놀 마스크팩', price: 550, thumb:'🎭', desc:'대용량 가성비 레티놀 시트마스크' },
+      { name: '모모프리 화장수', price: 860, thumb:'🍑', desc:'복숭아 향, 10~20대에게 인기' },
     ]
   },
   {
@@ -516,18 +519,21 @@ const categories = [
     name: '의약품/건강',
     emoji: '💊',
     products: [
-      { name: '동전파스', priceMin: 400, priceMax: 600, thumb:'⚪', desc:'붙이는 국민 진통 파스, 어깨/무릎에 효과적' },
-      { name: '사론파스', priceMin: 500, priceMax: 800, thumb:'🩹', desc:'근육통 완화 파스, 얇고 밀착력 좋음' },
-      { name: '용각산', priceMin: 900, priceMax: 1300, thumb:'🫙', desc:'목 관리용 가루약, 기침·목아픔에 애용' },
-      { name: '파브론 골드', priceMin: 1200, priceMax: 1600, thumb:'🍯', desc:'감기약으로 유명한 시럽형 종합감기약' },
-      { name: '스마일 아이드롭', priceMin: 500, priceMax: 800, thumb:'👁️', desc:'눈 피로·충혈 완화에 쓰는 인기 안약' },
-      { name: '세이로가시(정로환)', priceMin: 700, priceMax: 1100, thumb:'💊', desc:'복통·설사에 쓰는 일본 국민 상비약' },
-      { name: '오타이산', priceMin: 800, priceMax: 1200, thumb:'🌿', desc:'가루형 위장약, 속쓰림·소화불량에 효과적' },
-      { name: '카베진 코와', priceMin: 900, priceMax: 1400, thumb:'🥬', desc:'양배추 성분의 위장 보호 정장제' },
-      { name: '신비오페르민 정장제', priceMin: 900, priceMax: 1300, thumb:'🦠', desc:'장 건강을 위한 유산균 정장제' },
-      { name: '사카무케아', priceMin: 500, priceMax: 800, thumb:'💧', desc:'상처에 바르는 액체 밴드, 방수 코팅' },
-      { name: '트래베르민(멀미약)', priceMin: 500, priceMax: 800, thumb:'🚗', desc:'비행기·버스 이동 전 먹는 멀미약' },
-      { name: '대학목약', priceMin: 400, priceMax: 700, thumb:'👀', desc:'눈 피로 회복용 안약, 시원한 사용감' },
+      { name: '카베진 코와α', price: 2160, thumb:'💊', desc:'"일본 국민 위장약", 거의 모든 자료 1순위권' },
+      { name: '타이쇼 파브론골드A', price: 2050, thumb:'🤧', desc:'일본 감기약 시장 점유율 1위 종합감기약' },
+      { name: '오타이산', price: 1000, thumb:'🌿', desc:'140년 전통, 속쓰림·배탈에 효과적인 가루 소화제' },
+      { name: '동전파스 (로이히츠보코)', price: 920, thumb:'⚪', desc:'온열 파스, 박스째 사가는 국민템' },
+      { name: '휴족시간', price: 930, thumb:'🦵', desc:'여행 필수 힐링템, 다리 릴랙스 시트' },
+      { name: '브이로트 프리미엄 (아이봉)', price: 1180, thumb:'👁️', desc:'눈 피로 회복용 안구세정제' },
+      { name: '이브퀵 두통약', price: 1040, thumb:'🤕', desc:'빠른 흡수형 진통제' },
+      { name: '강력 와카모토', price: 2600, thumb:'💊', desc:'소화·식욕부진·변비 개선 위장 정장제' },
+      { name: '사카무케아', price: 700, thumb:'🩹', desc:'통증 완화 스티커형 구내염·상처 패치' },
+      { name: '메구리즘 온열 스팀 아이마스크', price: 1700, thumb:'♨️', desc:'눈 피로 회복, 숙소·비행기에서 인기' },
+      { name: '버퍼린A', price: 950, thumb:'💊', desc:'대표적인 두통약' },
+      { name: '신 우나코와 쿨', price: 490, thumb:'🦟', desc:'벌레 물린 데 바르는 외국인 관광객 단골템' },
+      { name: '용각산 다이렉트 스틱', price: 560, thumb:'🍬', desc:'기침·인후통 완화용 목캔디형 생약' },
+      { name: '쇼콜라BB', price: 1300, thumb:'🍫', desc:'피부트러블 개선용 비타민 건강식품' },
+      { name: '보라기놀A 연고', price: 1380, thumb:'🩹', desc:'상비약으로 다수 언급되는 치질연고' },
     ]
   },
   {
@@ -535,18 +541,11 @@ const categories = [
     name: '생활잡화',
     emoji: '🏠',
     products: [
-      { name: '휴대용 미니 선풍기', priceMin: 1000, priceMax: 2500, thumb:'🌀', desc:'여름 필수템, 목걸이형/휴대형 다양' },
-      { name: '온열 안대', priceMin: 300, priceMax: 500, thumb:'😴', desc:'따뜻한 찜질 안대, 눈 피로 회복용' },
-      { name: '수면 마스크', priceMin: 400, priceMax: 700, thumb:'🌙', desc:'비행기·숙소에서 유용한 차광 안대' },
-      { name: '휴대용 우산(미니)', priceMin: 800, priceMax: 1500, thumb:'☂️', desc:'가볍고 튼튼한 3단 접이식 우산' },
-      { name: '핫팩', priceMin: 300, priceMax: 600, thumb:'🔥', desc:'겨울철 필수, 붙이는 타입/흔드는 타입' },
-      { name: '메구리즘 온열 넥워머', priceMin: 500, priceMax: 800, thumb:'♨️', desc:'전자레인지로 데워쓰는 목 찜질팩' },
-      { name: '휴대용 손소독제 케이스', priceMin: 300, priceMax: 600, thumb:'🧴', desc:'가방에 걸고 다니는 미니 소독제 용기' },
-      { name: '여행용 지퍼백 파우치 세트', priceMin: 400, priceMax: 800, thumb:'👜', desc:'옷·세면도구 정리에 유용한 압축 파우치' },
-      { name: '발열 조끼', priceMin: 1500, priceMax: 3000, thumb:'🧥', desc:'겨울 여행 필수, 얇지만 따뜻한 방한용품' },
-      { name: '호텔용 실내 슬리퍼', priceMin: 500, priceMax: 900, thumb:'🩴', desc:'가볍게 접어 다니는 여행용 슬리퍼' },
-      { name: '휴대용 미니 체중계', priceMin: 700, priceMax: 1200, thumb:'⚖️', desc:'캐리어 무게 초과를 막아주는 필수템' },
-      { name: '마이크로화이버 타월', priceMin: 500, priceMax: 900, thumb:'🧻', desc:'빨리 마르고 가벼운 여행용 수건' },
+      { name: '정열가격(PB) 생활잡화 시리즈', price: 300, thumb:'🛒', desc:'돈키호테 자체 브랜드, 전 카테고리 가성비 최강' },
+      { name: '고바야시 소슈겐 (휴대용)', price: 600, thumb:'🚻', desc:'뷰티템과 함께 자주 추천되는 휴대용 탈취제' },
+      { name: '그린벨 눈썹 트위저', price: 990, thumb:'✂️', desc:'뷰티/잡화 겸용으로 다수 언급되는 인기템' },
+      { name: '얼룩제거 펜', price: 970, thumb:'🖊️', desc:'유명 스테디셀러, 최근 일부 후기는 호불호 존재' },
+      { name: '바스크린 입욕제', price: 150, thumb:'🛁', desc:'패키지가 예뻐 선물용으로 인기, 향은 호불호' },
     ]
   },
   {
@@ -554,37 +553,15 @@ const categories = [
     name: '주류',
     emoji: '🍶',
     products: [
-      { name: '하이볼 캔', priceMin: 150, priceMax: 250, thumb:'🥤', desc:'편의점보다 저렴한 캔 하이볼, 종류 다양' },
-      { name: '매실주(우메슈)', priceMin: 900, priceMax: 1800, thumb:'🍇', desc:'달콤한 일본식 매실주, 선물용으로 인기' },
-      { name: '산토리 위스키 미니어처', priceMin: 500, priceMax: 1500, thumb:'🥃', desc:'가볍게 사가기 좋은 소용량 위스키' },
-      { name: '유자슈', priceMin: 800, priceMax: 1400, thumb:'🍋', desc:'상큼한 유자 향의 리큐르' },
-      { name: '지역 한정 사케', priceMin: 1000, priceMax: 3000, thumb:'🍶', desc:'지역별 한정판 사케, 선물용 인기템' },
-      { name: '논알콜 하이볼', priceMin: 150, priceMax: 250, thumb:'🧃', desc:'술 못 마시는 일행도 함께 즐기는 무알콜 음료' },
-      { name: '레몬사와 캔', priceMin: 150, priceMax: 280, thumb:'🍋', desc:'상큼하고 청량한 인기 츄하이 계열 캔' },
-      { name: '츄하이 각종맛', priceMin: 150, priceMax: 300, thumb:'🍹', desc:'과일 맛이 다양한 저도수 탄산 주류' },
-      { name: '카쿠 하이볼', priceMin: 150, priceMax: 250, thumb:'🥂', desc:'산토리 카쿠빙으로 만든 정통 하이볼 캔' },
-      { name: '니혼슈 미니병(300ml)', priceMin: 600, priceMax: 1200, thumb:'🍶', desc:'부담 없이 사가기 좋은 소용량 정종' },
-      { name: '우메슈 소다', priceMin: 200, priceMax: 350, thumb:'🫧', desc:'매실주에 탄산을 더한 상큼한 캔 음료' },
-      { name: '위스키 하이볼 페트병', priceMin: 400, priceMax: 700, thumb:'🧉', desc:'대용량으로 나눠 마시기 좋은 하이볼' },
-    ]
-  },
-  {
-    id: 'goods',
-    name: '캐릭터굿즈',
-    emoji: '🎁',
-    products: [
-      { name: '스모 소금 캐릭터 인형', priceMin: 800, priceMax: 1500, thumb:'🧸', desc:'돈키호테 인기 캐릭터 굿즈' },
-      { name: '지브리 스튜디오 소품', priceMin: 1000, priceMax: 3000, thumb:'🎬', desc:'토토로 등 지브리 캐릭터 문구/소품' },
-      { name: '산리오 캐릭터 문구', priceMin: 500, priceMax: 1200, thumb:'🎀', desc:'헬로키티 등 산리오 캐릭터 상품' },
-      { name: '포켓몬 인형뽑기/굿즈', priceMin: 700, priceMax: 2000, thumb:'⭐', desc:'포켓몬 한정 굿즈, 매장마다 재고 상이' },
-      { name: '돈키호테 오리지널 굿즈', priceMin: 600, priceMax: 1500, thumb:'🐧', desc:'펭귄 마스코트 돈펜 관련 오리지널 상품' },
-      { name: '짱구는못말려 굿즈', priceMin: 500, priceMax: 1300, thumb:'✏️', desc:'국민 캐릭터 짱구의 문구·소품 라인업' },
-      { name: '도라에몽 미니피규어', priceMin: 600, priceMax: 1400, thumb:'🔵', desc:'디테일 살아있는 인기 캐릭터 피규어' },
-      { name: '원피스 캐릭터 열쇠고리', priceMin: 400, priceMax: 900, thumb:'🗝️', desc:'애니메이션 팬 사이에서 인기 있는 굿즈' },
-      { name: '스누피 문구 세트', priceMin: 500, priceMax: 1200, thumb:'🐶', desc:'심플하고 예쁜 디자인의 피너츠 문구' },
-      { name: '리락쿠마 인형', priceMin: 900, priceMax: 2200, thumb:'🐻', desc:'포근한 감성의 힐링 캐릭터 인형' },
-      { name: '귀멸의칼날 굿즈', priceMin: 600, priceMax: 1800, thumb:'⚔️', desc:'애니메이션 인기에 힘입은 콜라보 상품' },
-      { name: '스타워즈 콜라보 굿즈', priceMin: 800, priceMax: 2500, thumb:'🚀', desc:'일본 한정으로 나오는 콜라보 상품' },
+      { name: '산토리 위스키 (가쿠빈)', price: 2100, thumb:'🥃', desc:'인기로 품절되는 경우도 있을 만큼 최다 언급' },
+      { name: '닛카 블랙니카 클리어', price: 990, thumb:'🥃', desc:'하이볼 베이스로 가성비 최고 평가' },
+      { name: '아사히 수퍼드라이', price: 280, thumb:'🍺', desc:'일본 맥주 대표 브랜드' },
+      { name: '산토리 프리미엄 몰츠', price: 220, thumb:'🍺', desc:'대표 프리미엄 맥주' },
+      { name: '짐빔', price: 1260, thumb:'🥃', desc:'산토리 산하, 대용량 판매로 인기' },
+      { name: '잭다니엘 허니', price: 2140, thumb:'🥃', desc:'달콤한 맛으로 하이볼 제조 시 인기인 리큐르' },
+      { name: '닷사이 45 (사케)', price: 3140, thumb:'🍶', desc:'한국 대비 저렴한 프리미엄 사케' },
+      { name: '기린 이치방시보리', price: 200, thumb:'🍺', desc:'대표 국민 맥주 브랜드' },
+      { name: '정열가격(PB) 하이볼캔·소주·매실주', price: 150, thumb:'🍹', desc:'돈키호테 자체 제조 주류 라인' },
     ]
   },
 ];
@@ -729,7 +706,7 @@ function openModal(catId, idx) {
   modalRank.textContent = `${category.emoji} ${category.name} ${rank}위`;
   modalThumb.innerHTML = thumbInner(p);
   modalName.textContent = p.name;
-  modalPrice.textContent = `¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}`;
+  modalPrice.textContent = `¥${p.price.toLocaleString()}`;
   modalDesc.textContent = p.desc;
   renderModalCartControl(catId, idx);
 
@@ -764,15 +741,14 @@ function renderCartPanel() {
     return;
   }
 
-  let totalMin = 0, totalMax = 0, totalQty = 0;
+  let totalPrice = 0, totalQty = 0;
 
   cartList.innerHTML = keys.map(key => {
     const [catId, idxStr] = key.split('::');
     const idx = Number(idxStr);
     const { product: p } = getProduct(catId, idx);
     const qty = cart[key];
-    totalMin += p.priceMin * qty;
-    totalMax += p.priceMax * qty;
+    totalPrice += p.price * qty;
     totalQty += qty;
 
     return `
@@ -780,7 +756,7 @@ function renderCartPanel() {
         <div class="thumb">${thumbInner(p)}</div>
         <div class="info">
           <div class="name">${p.name}</div>
-          <div class="unit-price">¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}</div>
+          <div class="unit-price">¥${p.price.toLocaleString()}</div>
         </div>
         <div class="qty-stepper">
           <button data-action="dec">−</button>
@@ -793,7 +769,7 @@ function renderCartPanel() {
   }).join('');
 
   cartTotalCount.textContent = `담은 상품 ${totalQty}개`;
-  cartTotalPrice.textContent = `¥${totalMin.toLocaleString()} ~ ¥${totalMax.toLocaleString()}`;
+  cartTotalPrice.textContent = `¥${totalPrice.toLocaleString()}`;
   cartFooter.style.display = 'block';
 }
 
@@ -884,7 +860,7 @@ function cardHtml(p, catId, idx, rank, catTag) {
       <div class="info">
         ${catTag ? `<div class="cat-tag">${catTag}</div>` : ''}
         <div class="name">${p.name}</div>
-        <div class="price">¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}</div>
+        <div class="price">¥${p.price.toLocaleString()}</div>
       </div>
     </div>
   `;
