@@ -148,6 +148,12 @@
   .rank-badge.bronze { background:#fbe4d1; color:#b5651d; }
 
   .info { padding: 12px 14px 16px; }
+  .info .cat-tag {
+    font-size:11px;
+    font-weight:700;
+    color:#ff3b5c;
+    margin-bottom:4px;
+  }
   .info .name {
     font-size:14.5px;
     font-weight:700;
@@ -800,8 +806,23 @@ document.addEventListener('keydown', (e) => {
 
 renderCartBadge();
 
+const ALL_ID = 'all';
+const ALL_META = { id: ALL_ID, name: '전체', emoji: '🏆' };
+
+function getAllRanking() {
+  const maxLen = Math.max(...categories.map(c => c.products.length));
+  const merged = [];
+  for (let round = 0; round < maxLen; round++) {
+    categories.forEach(c => {
+      const p = c.products[round];
+      if (p) merged.push({ p, catId: c.id, catName: c.name, catEmoji: c.emoji, idx: round });
+    });
+  }
+  return merged;
+}
+
 function renderTabs(activeId) {
-  tabsEl.innerHTML = categories.map(c => `
+  tabsEl.innerHTML = [ALL_META, ...categories].map(c => `
     <button class="tab-btn ${c.id === activeId ? 'active' : ''}" data-id="${c.id}">
       ${c.emoji} ${c.name}
     </button>
@@ -812,30 +833,47 @@ function renderTabs(activeId) {
   });
 }
 
+function cardHtml(p, catId, idx, rank, catTag) {
+  const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+  return `
+    <div class="product-card" data-cat="${catId}" data-idx="${idx}">
+      <div class="rank-badge ${rankClass}">${rank}</div>
+      <div class="thumb">${p.thumb}</div>
+      <div class="info">
+        ${catTag ? `<div class="cat-tag">${catTag}</div>` : ''}
+        <div class="name">${p.name}</div>
+        <div class="price">¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}</div>
+      </div>
+    </div>
+  `;
+}
+
 function showCategory(id) {
+  if (id === ALL_ID) {
+    const merged = getAllRanking();
+    titleEl.textContent = `${ALL_META.emoji} 전체 랭킹`;
+    subEl.textContent = `총 ${merged.length}개 · 모든 카테고리를 통합한 순위예요`;
+
+    listEl.innerHTML = merged.map((item, i) =>
+      cardHtml(item.p, item.catId, item.idx, i + 1, `${item.catEmoji} ${item.catName}`)
+    ).join('');
+
+    renderTabs(id);
+    return;
+  }
+
   const category = categories.find(c => c.id === id);
   titleEl.textContent = `${category.emoji} ${category.name} 랭킹`;
   subEl.textContent = `총 ${category.products.length}개 · 많이 사가는 순위대로 정리했어요`;
 
-  listEl.innerHTML = category.products.map((p, i) => {
-    const rank = i + 1;
-    const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
-    return `
-      <div class="product-card" data-cat="${category.id}" data-idx="${i}">
-        <div class="rank-badge ${rankClass}">${rank}</div>
-        <div class="thumb">${p.thumb}</div>
-        <div class="info">
-          <div class="name">${p.name}</div>
-          <div class="price">¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}</div>
-        </div>
-      </div>
-    `;
-  }).join('');
+  listEl.innerHTML = category.products.map((p, i) =>
+    cardHtml(p, category.id, i, i + 1, null)
+  ).join('');
 
   renderTabs(id);
 }
 
-showCategory(categories[0].id);
+showCategory(ALL_ID);
 </script>
 
 </body>
