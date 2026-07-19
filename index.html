@@ -1,140 +1,295 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎰 로또 번호 추천기</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>돈키호테 쇼핑 랭킹 | 여행 전 필수 체크</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:"맑은 고딕","Apple SD Gothic Neo",sans-serif; }
+  body {
+    background:#0f1220;
+    color:#f2f2f2;
+    min-height:100vh;
+  }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "맑은 고딕", sans-serif;
-        }
+  header {
+    background: linear-gradient(135deg, #1a1f3c, #2d1b4e);
+    padding: 40px 20px 30px;
+    text-align:center;
+    border-bottom: 3px solid #ffd400;
+  }
+  header h1 {
+    font-size: 28px;
+    color:#ffd400;
+    letter-spacing: -0.5px;
+  }
+  header h1 span { color:#ff3d81; }
+  header p {
+    margin-top:10px;
+    color:#c7c7d9;
+    font-size:14px;
+  }
 
-        body {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  .tabs {
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding: 16px 16px 8px;
+    position: sticky;
+    top:0;
+    background:#0f1220;
+    z-index:10;
+    border-bottom:1px solid #2a2f4a;
+  }
+  .tabs::-webkit-scrollbar { height:4px; }
+  .tab-btn {
+    flex:0 0 auto;
+    padding:10px 16px;
+    border-radius:20px;
+    border:1px solid #383e63;
+    background:#1a1f3c;
+    color:#d4d4e4;
+    font-size:14px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:0.2s;
+  }
+  .tab-btn:hover { border-color:#ffd400; }
+  .tab-btn.active {
+    background:#ffd400;
+    color:#1a1f3c;
+    font-weight:bold;
+    border-color:#ffd400;
+  }
 
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,.2);
-            text-align: center;
-            width: 500px;
-        }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
 
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
+  .category-title {
+    font-size:18px;
+    margin: 10px 4px 16px;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .category-title small {
+    font-size:12px;
+    color:#8a8fb0;
+    font-weight:normal;
+  }
 
-        button {
-            padding: 15px 35px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            background: #ff9800;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+  .ranking-list {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
 
-        button:hover {
-            background: #f57c00;
-            transform: scale(1.05);
-        }
+  .product-card {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:#1a1f3c;
+    border:1px solid #2a2f4a;
+    border-radius:14px;
+    padding:14px;
+    cursor:pointer;
+    transition: 0.15s;
+  }
+  .product-card:hover {
+    border-color:#ff3d81;
+    transform: translateY(-2px);
+  }
 
-        #numbers {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+  .rank-badge {
+    flex:0 0 auto;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:15px;
+    background:#2a2f4a;
+    color:#c7c7d9;
+  }
+  .rank-badge.gold   { background:#ffd400; color:#1a1f3c; }
+  .rank-badge.silver { background:#d9d9e6; color:#1a1f3c; }
+  .rank-badge.bronze { background:#e0995c; color:#1a1f3c; }
 
-        .ball {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-            animation: pop .3s;
-        }
+  .thumb {
+    flex:0 0 auto;
+    width:52px;
+    height:52px;
+    border-radius:10px;
+    background:#2a2f4a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+  }
 
-        @keyframes pop {
-            from {
-                transform: scale(0);
-            }
-            to {
-                transform: scale(1);
-            }
-        }
+  .info { flex:1; min-width:0; }
+  .info .name {
+    font-size:15px;
+    font-weight:600;
+    color:#fff;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .info .price {
+    margin-top:4px;
+    font-size:13px;
+    color:#ffd400;
+  }
 
-        p {
-            margin-top: 20px;
-            color: #666;
-        }
-    </style>
+  .chevron { color:#5a5f80; font-size:18px; }
+
+  footer {
+    text-align:center;
+    padding:24px;
+    color:#5a5f80;
+    font-size:12px;
+  }
+</style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🎰 로또 번호 추천</h1>
+<header>
+  <h1>돈<span>키호테</span> 쇼핑 랭킹</h1>
+  <p>일본 여행 전, 사람들이 가장 많이 사오는 아이템을 카테고리별로 확인하세요</p>
+</header>
 
-    <button onclick="generateLotto()">
-        번호 추천받기
-    </button>
+<div class="tabs" id="tabs"></div>
 
-    <div id="numbers"></div>
+<main>
+  <div class="category-title" id="categoryTitle"></div>
+  <div class="ranking-list" id="rankingList"></div>
+</main>
 
-    <p>행운을 빕니다! 🍀</p>
-</div>
+<footer>본 사이트는 여행자를 위한 비공식 참고 정보이며, 실제 매장 재고·가격과 다를 수 있습니다.</footer>
 
 <script>
-function getColor(num){
-    if(num <= 10) return "#fbc400";
-    if(num <= 20) return "#69c8f2";
-    if(num <= 30) return "#ff7272";
-    if(num <= 40) return "#aaaaaa";
-    return "#7ac142";
+const categories = [
+  {
+    id: 'snack',
+    name: '과자/디저트',
+    emoji: '🍬',
+    products: [
+      { name: '도쿄 바나나', priceMin: 800, priceMax: 1200, thumb:'🍌', desc:'도쿄 대표 기념 과자, 바나나 크림 카스텔라' },
+      { name: '시로이 코이비토', priceMin: 1000, priceMax: 1600, thumb:'🍪', desc:'홋카이도 대표 화이트 초콜릿 랑그드샤' },
+      { name: '킷캇 각종 한정판', priceMin: 300, priceMax: 700, thumb:'🍫', desc:'말차/사케/딸기 등 일본 한정 맛 킷캇' },
+      { name: '자가리코', priceMin: 150, priceMax: 250, thumb:'🥔', desc:'컵 포테이토 스낵, 다양한 맛 존재' },
+      { name: '베이크 치즈타르트', priceMin: 400, priceMax: 600, thumb:'🧀', desc:'모리나가의 진한 구운 치즈타르트 과자' },
+    ]
+  },
+  {
+    id: 'beauty',
+    name: '뷰티/화장품',
+    emoji: '💄',
+    products: [
+      { name: '캔메이크 크림치크', priceMin: 700, priceMax: 900, thumb:'💗', desc:'가성비 최고 인기 볼터치, 색감이 자연스러움' },
+      { name: '멘소래담 아쿠아 립밤', priceMin: 300, priceMax: 500, thumb:'💋', desc:'촉촉함이 오래가는 국민 립밤' },
+      { name: 'DHC 딥클렌징오일', priceMin: 1500, priceMax: 2200, thumb:'🧴', desc:'모공 속 메이크업까지 지워주는 클렌징 오일' },
+      { name: '비오레 UV 선크림', priceMin: 800, priceMax: 1100, thumb:'☀️', desc:'끈적임 없는 데일리 자외선 차단제' },
+      { name: '센카 퍼펙트 휩', priceMin: 500, priceMax: 700, thumb:'🧼', desc:'풍성한 거품의 클렌징 폼, 세안 필수템' },
+    ]
+  },
+  {
+    id: 'medicine',
+    name: '의약품/건강',
+    emoji: '💊',
+    products: [
+      { name: '동전파스', priceMin: 400, priceMax: 600, thumb:'⚪', desc:'붙이는 국민 진통 파스, 어깨/무릎에 효과적' },
+      { name: '사론파스', priceMin: 500, priceMax: 800, thumb:'🩹', desc:'근육통 완화 파스, 얇고 밀착력 좋음' },
+      { name: '용각산', priceMin: 900, priceMax: 1300, thumb:'🫙', desc:'목 관리용 가루약, 기침·목아픔에 애용' },
+      { name: '파브론 골드', priceMin: 1200, priceMax: 1600, thumb:'🍯', desc:'감기약으로 유명한 시럽형 종합감기약' },
+      { name: '대웅 아이봉', priceMin: 600, priceMax: 900, thumb:'👁️', desc:'눈 세정액, 미세먼지·꽃가루 시즌 필수' },
+    ]
+  },
+  {
+    id: 'life',
+    name: '생활잡화',
+    emoji: '🏠',
+    products: [
+      { name: '휴대용 미니 선풍기', priceMin: 1000, priceMax: 2500, thumb:'🌀', desc:'여름 필수템, 목걸이형/휴대형 다양' },
+      { name: '온열 안대', priceMin: 300, priceMax: 500, thumb:'😴', desc:'따뜻한 찜질 안대, 눈 피로 회복용' },
+      { name: '수면 마스크', priceMin: 400, priceMax: 700, thumb:'🌙', desc:'비행기·숙소에서 유용한 차광 안대' },
+      { name: '휴대용 우산(미니)', priceMin: 800, priceMax: 1500, thumb:'☂️', desc:'가볍고 튼튼한 3단 접이식 우산' },
+      { name: '핫팩', priceMin: 300, priceMax: 600, thumb:'🔥', desc:'겨울철 필수, 붙이는 타입/흔드는 타입' },
+    ]
+  },
+  {
+    id: 'drink',
+    name: '주류',
+    emoji: '🍶',
+    products: [
+      { name: '하이볼 캔', priceMin: 150, priceMax: 250, thumb:'🥤', desc:'편의점보다 저렴한 캔 하이볼, 종류 다양' },
+      { name: '매실주(우메슈)', priceMin: 900, priceMax: 1800, thumb:'🍇', desc:'달콤한 일본식 매실주, 선물용으로 인기' },
+      { name: '산토리 위스키 미니어처', priceMin: 500, priceMax: 1500, thumb:'🥃', desc:'가볍게 사가기 좋은 소용량 위스키' },
+      { name: '유자슈', priceMin: 800, priceMax: 1400, thumb:'🍋', desc:'상큼한 유자 향의 리큐르' },
+      { name: '지역 한정 사케', priceMin: 1000, priceMax: 3000, thumb:'🍶', desc:'지역별 한정판 사케, 선물용 인기템' },
+    ]
+  },
+  {
+    id: 'goods',
+    name: '캐릭터굿즈',
+    emoji: '🎁',
+    products: [
+      { name: '스모 소금 캐릭터 인형', priceMin: 800, priceMax: 1500, thumb:'🧸', desc:'돈키호테 인기 캐릭터 굿즈' },
+      { name: '지브리 스튜디오 소품', priceMin: 1000, priceMax: 3000, thumb:'🎬', desc:'토토로 등 지브리 캐릭터 문구/소품' },
+      { name: '산리오 캐릭터 문구', priceMin: 500, priceMax: 1200, thumb:'🎀', desc:'헬로키티 등 산리오 캐릭터 상품' },
+      { name: '포켓몬 인형뽑기/굿즈', priceMin: 700, priceMax: 2000, thumb:'⭐', desc:'포켓몬 한정 굿즈, 매장마다 재고 상이' },
+      { name: '돈키호테 오리지널 굿즈', priceMin: 600, priceMax: 1500, thumb:'🐧', desc:'펭귄 마스코트 돈펜 관련 오리지널 상품' },
+    ]
+  },
+];
+
+const tabsEl = document.getElementById('tabs');
+const titleEl = document.getElementById('categoryTitle');
+const listEl = document.getElementById('rankingList');
+
+function renderTabs(activeId) {
+  tabsEl.innerHTML = categories.map(c => `
+    <button class="tab-btn ${c.id === activeId ? 'active' : ''}" data-id="${c.id}">
+      ${c.emoji} ${c.name}
+    </button>
+  `).join('');
+
+  tabsEl.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => showCategory(btn.dataset.id));
+  });
 }
 
-function generateLotto(){
+function showCategory(id) {
+  const category = categories.find(c => c.id === id);
+  titleEl.innerHTML = `${category.emoji} ${category.name} TOP ${category.products.length} <small>많이 사가는 순</small>`;
 
-    const numbers = [];
+  listEl.innerHTML = category.products.map((p, i) => {
+    const rank = i + 1;
+    const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+    return `
+      <div class="product-card" data-cat="${category.id}" data-idx="${i}">
+        <div class="rank-badge ${rankClass}">${rank}</div>
+        <div class="thumb">${p.thumb}</div>
+        <div class="info">
+          <div class="name">${p.name}</div>
+          <div class="price">¥${p.priceMin.toLocaleString()} ~ ¥${p.priceMax.toLocaleString()}</div>
+        </div>
+        <div class="chevron">›</div>
+      </div>
+    `;
+  }).join('');
 
-    while(numbers.length < 6){
-        let n = Math.floor(Math.random() * 45) + 1;
-
-        if(!numbers.includes(n)){
-            numbers.push(n);
-        }
-    }
-
-    numbers.sort((a,b)=>a-b);
-
-    const result = document.getElementById("numbers");
-    result.innerHTML = "";
-
-    numbers.forEach(num=>{
-        const ball = document.createElement("div");
-        ball.className = "ball";
-        ball.style.background = getColor(num);
-        ball.textContent = num;
-        result.appendChild(ball);
-    });
+  renderTabs(id);
 }
+
+showCategory(categories[0].id);
 </script>
 
 </body>
