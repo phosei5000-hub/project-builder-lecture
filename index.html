@@ -1206,16 +1206,121 @@ renderCartBadge();
 const ALL_ID = 'all';
 const ALL_META = { id: ALL_ID, name: '전체', emoji: '🏆' };
 
+// Real-world overall popularity order across every category (researched from
+// travel/shopping guides), used to rank the "전체" tab instead of just
+// interleaving each category's own internal order.
+const GLOBAL_POPULARITY_ORDER = [
+  '카베진 코와 알파',
+  '멜라노 CC 비타민C 미용액',
+  '휴족시간',
+  '코로로 젤리',
+  '케아나 나데시코 쌀 마스크',
+  '샤론파스',
+  '센카 퍼펙트 휩 오리지널',
+  '정로환 당의정',
+  '녹차 킷캣 (우지말차)',
+  '파브론 골드 A',
+  '비오레 UV 아쿠아 리치 선크림',
+  '히로인메이크 롱앤컬 마스카라',
+  '메구리즘 증기 온열 수면안대',
+  '로이히츠보코 동전파스',
+  '시루콧토 화장솜',
+  '아사히 수퍼드라이 생맥주캔',
+  '우콘노치카라',
+  '하다라보 고쿠쥰 프리미엄 로션',
+  '이치란 라멘 밀키트',
+  '닛신 컵누들 씨푸드',
+  '킷캣 일본 지역 한정맛',
+  '용각산 다이렉트',
+  '메구리즘 온열 목 패치',
+  '사보리노 메가샷 나이트 마스크',
+  '가루비 쟈가리코',
+  '모리나가 베이크 크리미 치즈',
+  '산토리 가쿠빈 위스키',
+  'UFO 야키소바',
+  '로키소닌 S 프리미엄',
+  '달바 화이트트러플 퍼스트스프레이 세럼',
+  '호로요이 (과일맥주)',
+  '골든 커리 고체카레',
+  '덴탈프로 치간칫솔',
+  '이브 퀵 DX',
+  '부르본 엘리제',
+  '오타이산',
+  '오리히로 곤약젤리 (파우치형)',
+  '타케다 알리나민 EX 플러스',
+  '닛신 컵누들 카레맛',
+  '휴족시간 지압 자극 시트',
+  '우마이봉 메가팩',
+  '명란 마요네즈 (큐피)',
+  '안메루츠 요코요코',
+  '메이지 다케노코노 사토 (죽순마을)',
+  '알포트 초콜릿 비스킷',
+  '메이지 키노코노 야마 (버섯의 산)',
+  '큐피 마요네즈 (고소한 맛)',
+  '비오레 사라사라 파우더 시트',
+  '가루비 쟈가포클',
+  '초야 매실주 (우메슈)',
+  '로이히츠보코 동전파스 (쿨 버전)',
+  'VT 미니 리드 리들 S',
+  '티롤 초코',
+  '에바라 야키니쿠 타레',
+  '레노아 해피니스 섬유유연제',
+  '로토 비타40 안약',
+  '퀄리티퍼스트 더마레이저 슈퍼 VC100',
+  '훈와리메이진 콩가루 모찌',
+  '바스클린 / 바부 탄산 입욕제',
+  '산테 FX 네오',
+  '립 퐁듀 (로토제약)',
+  '무히 패치 (호빵맨 모기패치)',
+  '사카무케아',
+  '산토리 프리미엄 몰츠',
+  '참깨마늘 후리카케',
+  '케이트 래쉬 맥시마이저 (뷰러)',
+  '피노 프리미엄 터치 헤어마스크',
+  '닷사이 23 / 39 (사케)',
+  '일회용 온열 마스크 (메구리즘)',
+  '사나 두유 이소플라본 아이크림',
+  '하이츄 푸니샤리',
+  '돈키호테 메가팩 곤약젤리',
+  '아시리라 수액 시트',
+  '고바야시 네츠사마시트',
+  '신비 메소드 더마 세럼 바쿠치올',
+  '모리나가 밀크 카라멜',
+  '돈베이 유부우동',
+  '고바야시 제약 안경 크리너',
+  '노도누루 스프레이',
+  '모모푸리 복숭아 젤 크림',
+  '이치란 라멘 비법 가루',
+  '가오 퀵클 와이퍼',
+  '스토파 정',
+  '클럽 수핀 파우더',
+  'S&B 라유 (고추기름)',
+  '치아미백 테이프',
+  '더 리포 비타민C 딥캡슐',
+  '네추럴 마유크림',
+  '민티아',
+  '모모야 라유 (먹는 고추기름)',
+  '압박 스타킹',
+  '페어 아크네 크림',
+  '펠리칸 힙케어 비누',
+  '초콧토 푸친 푸딩',
+  'SALONIA 빗',
+  '방풍통성산',
+  '퓨오라 탄산 치약',
+  '표고버섯 스낵',
+  '테라오카 달걀간장풍 밥소스 (포션형)',
+  '피죤 열냉각 시트'
+];
+
 function getAllRanking() {
-  const maxLen = Math.max(...categories.map(c => c.products.length));
-  const merged = [];
-  for (let round = 0; round < maxLen; round++) {
-    categories.forEach(c => {
-      const p = c.products[round];
-      if (p) merged.push({ p, catId: c.id, catName: c.name, catEmoji: c.emoji, idx: round });
+  const flat = [];
+  categories.forEach(c => {
+    c.products.forEach((p, idx) => {
+      flat.push({ p, catId: c.id, catName: c.name, catEmoji: c.emoji, idx });
     });
-  }
-  return merged;
+  });
+  flat.sort((a, b) => GLOBAL_POPULARITY_ORDER.indexOf(a.p.name) - GLOBAL_POPULARITY_ORDER.indexOf(b.p.name));
+  return flat;
 }
 
 function renderTabs(activeId) {
