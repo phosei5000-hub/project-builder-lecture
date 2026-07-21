@@ -1273,7 +1273,11 @@ function showCategory(id, opts = {}) {
 }
 
 function scrollToRanking() {
-  tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // tabsEl is position:sticky, so once it's stuck to the top its
+  // getBoundingClientRect() (and scrollIntoView) already reports top:0 —
+  // making scrollIntoView a no-op when scrolled past it. offsetTop reflects
+  // its static in-flow position instead, so it works from any scroll depth.
+  window.scrollTo({ top: tabsEl.offsetTop, behavior: 'smooth' });
 }
 
 showCategory(ALL_ID);
