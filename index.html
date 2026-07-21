@@ -416,6 +416,30 @@
   .cart-footer .total-row.price { font-size:16px; font-weight:800; color:#1c1c1e; }
   .cart-footer .total-row.price span:last-child { color:#ff3b5c; }
 
+  .tax-box {
+    margin-top:12px;
+    padding:12px 14px;
+    border-radius:14px;
+    font-size:12.5px;
+    line-height:1.6;
+  }
+  .tax-box.eligible { background:#fff0f3; color:#8a2a3a; }
+  .tax-box.not-eligible { background:#f7f7f8; color:#6e6e73; }
+  .tax-box .tax-title {
+    font-weight:800;
+    font-size:13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:4px;
+  }
+  .tax-box.eligible .tax-title { color:#ff3b5c; }
+  .tax-box .tax-row {
+    display:flex; justify-content:space-between; margin-top:2px;
+  }
+  .tax-box .tax-row span:last-child { font-weight:700; color:#1c1c1e; }
+  .tax-box .tax-note { margin-top:6px; color:#a0a0a5; font-size:11px; }
+
   .cart-clear-btn {
     margin-top:14px;
     width:100%;
@@ -711,6 +735,7 @@
     <div class="cart-footer" id="cartFooter" style="display:none">
       <div class="total-row"><span id="cartTotalCount"></span><span></span></div>
       <div class="total-row price"><span>예상 총액</span><span id="cartTotalPrice"></span></div>
+      <div id="taxBox"></div>
       <button class="cart-clear-btn" id="cartClearBtn">쇼핑리스트 비우기</button>
     </div>
   </div>
@@ -914,9 +939,27 @@ const cartList = document.getElementById('cartList');
 const cartFooter = document.getElementById('cartFooter');
 const cartTotalCount = document.getElementById('cartTotalCount');
 const cartTotalPrice = document.getElementById('cartTotalPrice');
+const taxBox = document.getElementById('taxBox');
 const cartClearBtn = document.getElementById('cartClearBtn');
 
 let currentModalKey = null;
+
+// ---------- tax-free (면세) helper ----------
+// Japan's tax-free rule for foreign tourists: consumables + general goods
+// combined must total 5,000 yen or more BEFORE tax (10%) at one store, per day.
+// Product prices on this site are tax-included retail prices, so the
+// tax-included cutoff works out to 5,000 * 1.1 = 5,500 yen.
+const TAX_RATE = 0.10;
+const TAX_FREE_MIN_EXCL_TAX = 5000;
+const TAX_FREE_MIN_INCL_TAX = Math.round(TAX_FREE_MIN_EXCL_TAX * (1 + TAX_RATE));
+
+function taxFreeInfo(totalIncludingTax) {
+  const excludingTax = Math.round(totalIncludingTax / (1 + TAX_RATE));
+  const savings = totalIncludingTax - excludingTax;
+  const eligible = totalIncludingTax >= TAX_FREE_MIN_INCL_TAX;
+  const shortBy = Math.max(0, TAX_FREE_MIN_INCL_TAX - totalIncludingTax);
+  return { excludingTax, savings, eligible, shortBy };
+}
 
 // ---------- cart storage ----------
 const CART_KEY = 'donki-cart';
@@ -1065,6 +1108,26 @@ function renderCartPanel() {
 
   cartTotalCount.textContent = `담은 상품 ${totalQty}개`;
   cartTotalPrice.textContent = `¥${totalPrice.toLocaleString()}`;
+
+  const tax = taxFreeInfo(totalPrice);
+  if (tax.eligible) {
+    taxBox.innerHTML = `
+      <div class="tax-box eligible">
+        <div class="tax-title"><span>🎉 면세 대상이에요</span></div>
+        <div class="tax-row"><span>면세 적용가 (세금 제외)</span><span>¥${tax.excludingTax.toLocaleString()}</span></div>
+        <div class="tax-row"><span>절약되는 소비세</span><span>¥${tax.savings.toLocaleString()}</span></div>
+        <div class="tax-note">세전 ${TAX_FREE_MIN_EXCL_TAX.toLocaleString()}엔 이상 구매 시 면세 대상 (여권 지참, 매장 면세 카운터 이용). 실제 적용 여부는 매장·상품 분류에 따라 다를 수 있어요.</div>
+      </div>
+    `;
+  } else {
+    taxBox.innerHTML = `
+      <div class="tax-box not-eligible">
+        <div class="tax-title"><span>면세까지 ¥${tax.shortBy.toLocaleString()} 남았어요</span></div>
+        <div class="tax-note">한 매장에서 세전 ${TAX_FREE_MIN_EXCL_TAX.toLocaleString()}엔(택스인 약 ¥${TAX_FREE_MIN_INCL_TAX.toLocaleString()}) 이상 구매하면 소비세 10%를 면세받을 수 있어요.</div>
+      </div>
+    `;
+  }
+
   cartFooter.style.display = 'block';
 }
 
