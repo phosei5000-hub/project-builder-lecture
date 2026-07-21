@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>돈키호테 쇼핑 랭킹 | 여행 전 필수 체크</title>
+<title>돈키호테 쇼핑 랭킹 | 일본 여행 전 필수 체크리스트</title>
+<meta name="description" content="일본 돈키호테에서 여행객들이 가장 많이 사가는 의약품·뷰티·과자·식품·라이프스타일 아이템 100개를 카테고리별 인기순으로 정리했습니다. 가격, 특징, 면세 팁까지 한 번에 확인하세요.">
+<meta name="keywords" content="돈키호테, 돈키호테 추천템, 일본여행 쇼핑리스트, 돈키호테 쇼핑리스트, 일본 면세 쇼핑, 돈키호테 인기템">
+<link rel="canonical" href="https://phosei5000-hub.github.io/project-builder-lecture/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="돈키호테 쇼핑 랭킹 | 일본 여행 전 필수 체크리스트">
+<meta property="og:description" content="일본 돈키호테 인기 아이템 100개를 카테고리별 순위로 확인하고 쇼핑리스트에 담아보세요.">
+<meta property="og:url" content="https://phosei5000-hub.github.io/project-builder-lecture/index.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%8D%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" as="style" crossorigin
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 <style>
@@ -420,15 +429,146 @@
     cursor:pointer;
   }
   .cart-clear-btn:hover { border-color:#ff3b5c; color:#ff3b5c; }
+
+  /* site-wide nav bar (links to about/contact/terms/privacy) */
+  .site-nav {
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    padding:10px 20px;
+    border-bottom:1px solid #f0f0f2;
+    background:#fafafa;
+  }
+  .site-nav a {
+    color:#8e8e93;
+    font-size:12.5px;
+    font-weight:600;
+    text-decoration:none;
+  }
+  .site-nav a:hover { color:#ff3b5c; }
+
+  .intro {
+    max-width: 720px;
+    margin: 20px auto 0;
+    padding: 0 24px;
+    text-align:center;
+    color:#6e6e73;
+    font-size:13.5px;
+    line-height:1.7;
+  }
+
+  /* editorial guide / FAQ section */
+  .guide {
+    max-width: 760px;
+    margin: 12px auto 0;
+    padding: 40px 24px 8px;
+    border-top: 1px solid #f0f0f2;
+  }
+  .guide h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 8px 0 14px;
+    color:#1c1c1e;
+  }
+  .guide h2:first-child { margin-top:0; }
+  .guide h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 22px 0 8px;
+    color:#1c1c1e;
+  }
+  .guide p {
+    font-size: 14px;
+    color:#3c3c43;
+    line-height:1.75;
+    margin-bottom: 12px;
+  }
+  .guide ul {
+    margin: 0 0 14px 20px;
+    font-size: 14px;
+    color:#3c3c43;
+    line-height:1.75;
+  }
+  .guide li { margin-bottom:6px; }
+  .guide-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:14px;
+    margin: 14px 0 24px;
+  }
+  .guide-card {
+    border:1px solid #f0f0f2;
+    border-radius:16px;
+    padding:16px 18px;
+  }
+  .guide-card .emoji { font-size:22px; margin-bottom:6px; display:block; }
+  .guide-card h4 {
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:6px;
+    color:#1c1c1e;
+  }
+  .guide-card p {
+    font-size:13px;
+    color:#6e6e73;
+    margin-bottom:0;
+    line-height:1.6;
+  }
+  .faq-item {
+    border-bottom:1px solid #f5f5f6;
+    padding: 14px 0;
+  }
+  .faq-item:last-child { border-bottom:none; }
+  .faq-item .q {
+    font-size:14.5px;
+    font-weight:700;
+    color:#1c1c1e;
+    margin-bottom:6px;
+  }
+  .faq-item .q::before { content:'Q. '; color:#ff3b5c; }
+  .faq-item .a {
+    font-size:13.5px;
+    color:#6e6e73;
+    line-height:1.7;
+  }
+
+  footer .footer-links {
+    margin-bottom:10px;
+  }
+  footer .footer-links a {
+    color:#8e8e93;
+    margin: 0 8px;
+    font-size:12px;
+    font-weight:600;
+    text-decoration:none;
+  }
+  footer .footer-links a:hover { color:#ff3b5c; }
 </style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="index.html">랭킹 보기</a>
+  <a href="about.html">사이트 소개</a>
+  <a href="contact.html">문의하기</a>
+  <a href="terms.html">이용약관</a>
+  <a href="privacy.html">개인정보처리방침</a>
+</nav>
 
 <div class="app">
   <header>
     <h1>돈<span>키호테</span> 쇼핑 랭킹</h1>
     <p>일본 여행 전, 사람들이 가장 많이 사오는 아이템을<br>카테고리별로 확인하세요</p>
   </header>
+
+  <p class="intro">
+    여행 미디어·블로그·SNS에서 반복적으로 언급되는 돈키호테 인기 상품 100개를
+    의약품·뷰티·스낵·식품/주류·라이프스타일 5개 카테고리로 나눠 실제 인기 순으로 정리했습니다.
+    상품을 눌러 자세한 설명을 확인하고, 마음에 드는 상품은 오른쪽 아래 🛍️ 버튼으로
+    쇼핑리스트에 담아 매장에서 체크리스트처럼 활용해 보세요. 순위 산정 방식과 이용 팁은
+    아래 가이드에서 자세히 안내합니다.
+  </p>
 
   <div class="tabs" id="tabs"></div>
 
@@ -438,7 +578,112 @@
     <div class="ranking-list" id="rankingList"></div>
   </main>
 
-  <footer>본 사이트는 여행자를 위한 비공식 참고 정보이며, 실제 매장 재고·가격과 다를 수 있습니다.</footer>
+  <section class="guide">
+    <h2>돈키호테 쇼핑, 이렇게 준비하세요</h2>
+    <p>
+      돈키호테(ドン・キホーテ)는 신주쿠, 시부야, 오사카 도톤보리 등 일본 주요 관광지 곳곳에
+      있는 대형 할인 잡화점으로, 대부분의 매장이 심야까지 또는 24시간 영업합니다. 매장 면적이
+      넓고 취급 품목이 의약품부터 가전, 코스프레 의상까지 워낙 다양해서, 처음 방문하면 원하는
+      상품을 찾는 데만 상당한 시간이 걸립니다. 이 페이지의 순위를 미리 확인하고 쇼핑리스트에
+      담아가면 짧은 여행 일정 안에서도 효율적으로 쇼핑할 수 있습니다.
+    </p>
+
+    <h3>면세(Tax-Free) 받는 방법</h3>
+    <p>
+      외국인 관광객은 여권을 지참하면 한 매장에서 하루 합산 5,000엔 이상 구매 시 소비세(10%)를
+      면세받을 수 있습니다. 매장 내 별도의 면세 카운터에서 여권을 제시하고 진행하며, 일반
+      물품(가전·잡화 등)과 소모품(화장품·식품·의약품·주류 등)은 합산 한도와 포장 규정이
+      다르므로 계산 전에 직원에게 확인하는 것이 안전합니다. 소모품으로 분류된 상품은 특수
+      포장 후 개봉하면 면세 혜택이 취소될 수 있으니, 한국에 돌아갈 때까지 포장을 뜯지 않는
+      것이 좋습니다.
+    </p>
+
+    <h3>카테고리별 쇼핑 포인트</h3>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <span class="emoji">💊</span>
+        <h4>의약품 & 헬스케어</h4>
+        <p>한국에 없는 성분·제형의 상비약이 많아 가장 인기 있는 카테고리입니다. 반입 제한
+          성분이 있는 국가로 이동하는 경우 성분표를 미리 확인하세요.</p>
+      </div>
+      <div class="guide-card">
+        <span class="emoji">🧴</span>
+        <h4>뷰티 & 스킨케어</h4>
+        <p>일본 로드숍·드럭스토어 스테디셀러가 한자리에 모여 있습니다. 여행 중 새 제품을
+          바로 얼굴에 사용하기보다는 손등 테스트 후 사용하는 것을 권장합니다.</p>
+      </div>
+      <div class="guide-card">
+        <span class="emoji">🍫</span>
+        <h4>스낵 & 디저트</h4>
+        <p>선물용으로 가장 부담 없는 카테고리입니다. 초콜릿류는 여름철 고온에 약하니
+          이동 중 보냉 파우치를 활용하면 좋습니다.</p>
+      </div>
+      <div class="guide-card">
+        <span class="emoji">🍜</span>
+        <h4>식품 & 소스류 / 주류</h4>
+        <p>한국 입국 시 주류는 1인당 2병(합산 2L 이하, 400달러 이하)까지 면세이며, 액체류는
+          위탁수하물로 부치는 것이 안전합니다. 초과분은 입국장 세관 신고가 필요합니다.</p>
+      </div>
+      <div class="guide-card">
+        <span class="emoji">🛌</span>
+        <h4>라이프스타일 & 힐링템</h4>
+        <p>장시간 걷는 여행 특성상 다리·눈 피로 케어 제품이 특히 인기입니다. 숙소에 도착한
+          첫날 밤이나 귀국 비행기 안에서 사용하면 효과적입니다.</p>
+      </div>
+    </div>
+
+    <h3>이 순위는 어떻게 만들어졌나요</h3>
+    <p>
+      각 카테고리의 순위는 MATCHA, LIVE JAPAN, DiGJAPAN, KKday, 트립스토어 등 여행 미디어의
+      추천 게시글과 여행 블로그·SNS 후기에서 반복적으로 언급되는 빈도, 그리고 상품 자체의
+      스테디셀러 여부를 종합해 정리했습니다. 가격은 아마존재팬(amazon.co.jp) 단품 실판매가를
+      기준으로 조사했으며 2026년 7월 기준입니다. 매장·지점·환율·시기에 따라 실제 가격은 차이가
+      날 수 있으므로, 예산을 가늠하는 참고용으로 활용해 주세요. 자세한 운영 정보는
+      <a href="about.html" style="color:#ff3b5c;font-weight:700;">사이트 소개</a> 페이지에서
+      확인할 수 있습니다.
+    </p>
+
+    <h3>자주 묻는 질문</h3>
+    <div class="faq-item">
+      <div class="q">돈키호테는 몇 시까지 영업하나요?</div>
+      <div class="a">대부분의 시내 매장은 24시간 또는 익일 새벽 2~5시까지 영업하지만, 지점마다
+        영업시간이 다르므로 방문 전 해당 지점의 영업시간을 확인하는 것이 좋습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">신용카드나 간편결제로 계산할 수 있나요?</div>
+      <div class="a">대부분의 매장에서 해외 발급 신용카드, 교통카드형 IC카드, 각종 QR 간편결제를
+        사용할 수 있습니다. 다만 일부 소형 점포는 결제 수단이 제한될 수 있어 현금도 소지하는 것이
+        안전합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">이 사이트는 돈키호테 공식 사이트인가요?</div>
+      <div class="a">아닙니다. 이 사이트는 돈키호테 및 관련 브랜드와 제휴·협찬 관계가 없는
+        비공식 개인 정보 사이트이며, 여행자 참고용으로 순위와 가격을 정리해 제공합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">가격이 실제 매장 가격과 다른데요?</div>
+      <div class="a">이 사이트의 가격은 아마존재팬 실판매가를 기준으로 한 참고 정보입니다.
+        환율, 지점, 프로모션 시기에 따라 실제 매장 가격은 달라질 수 있으니 구매 전 매장에서
+        가격을 다시 확인해 주세요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">순위에 없는 상품을 추천하거나, 잘못된 정보를 제보하고 싶어요.</div>
+      <div class="a"><a href="contact.html" style="color:#ff3b5c;font-weight:700;">문의하기</a>
+        페이지를 통해 알려주시면 확인 후 반영하겠습니다.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">랭킹 보기</a>
+      <a href="about.html">사이트 소개</a>
+      <a href="contact.html">문의하기</a>
+      <a href="terms.html">이용약관</a>
+      <a href="privacy.html">개인정보처리방침</a>
+    </div>
+    본 사이트는 여행자를 위한 비공식 참고 정보이며, 실제 매장 재고·가격과 다를 수 있습니다.<br>
+    © 2026 돈키호테 쇼핑 랭킹. All rights reserved.
+  </footer>
 </div>
 
 <div class="modal-backdrop" id="modalBackdrop">

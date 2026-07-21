@@ -1,0 +1,156 @@
+/* Shared styles for standalone pages (about / privacy / terms).
+   index.html keeps its own inline styles; this file mirrors the same
+   design tokens so every page in the site feels like one product. */
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+body {
+  background:#ffffff;
+  color:#1c1c1e;
+  line-height:1.7;
+}
+a { color:#ff3b5c; text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+.site-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid #f0f0f2;
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+.site-header .inner {
+  max-width: 880px;
+  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.site-logo {
+  font-size: 17px;
+  font-weight: 800;
+  color:#1c1c1e;
+}
+.site-logo span { color:#ff3b5c; }
+.site-nav {
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.site-nav a {
+  color:#6e6e73;
+  font-size:13.5px;
+  font-weight:600;
+}
+.site-nav a:hover { color:#ff3b5c; text-decoration:none; }
+.site-nav a.active { color:#ff3b5c; }
+
+.page-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+.page-wrap h1 {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing:-0.3px;
+}
+.page-wrap .updated {
+  color:#a0a0a5;
+  font-size:12.5px;
+  margin-bottom: 36px;
+}
+.page-wrap h2 {
+  font-size: 19px;
+  font-weight: 800;
+  margin: 36px 0 12px;
+  color:#1c1c1e;
+}
+.page-wrap h3 {
+  font-size: 15.5px;
+  font-weight: 700;
+  margin: 20px 0 8px;
+  color:#1c1c1e;
+}
+.page-wrap p {
+  font-size: 14.5px;
+  color:#3c3c43;
+  margin-bottom: 14px;
+}
+.page-wrap ul, .page-wrap ol {
+  margin: 0 0 14px 22px;
+  font-size: 14.5px;
+  color:#3c3c43;
+}
+.page-wrap li { margin-bottom: 6px; }
+.page-wrap table {
+  width:100%;
+  border-collapse: collapse;
+  margin: 12px 0 20px;
+  font-size: 13.5px;
+}
+.page-wrap th, .page-wrap td {
+  border:1px solid #ececee;
+  padding:10px 12px;
+  text-align:left;
+  vertical-align:top;
+}
+.page-wrap th {
+  background:#f7f7f8;
+  font-weight:700;
+  width: 30%;
+}
+.callout {
+  background:#fff0f3;
+  border:1px solid #ffd1da;
+  border-radius:14px;
+  padding:16px 18px;
+  font-size:13.5px;
+  color:#8a2a3a;
+  margin: 20px 0;
+}
+.contact-box {
+  margin-top:28px;
+  padding:20px;
+  border:1px solid #f0f0f2;
+  border-radius:16px;
+  background:#f7f7f8;
+}
+.contact-box a.btn {
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 18px;
+  border-radius:12px;
+  background:#ff3b5c;
+  color:#fff;
+  font-weight:700;
+  font-size:13.5px;
+}
+.contact-box a.btn:hover { background:#e8264a; text-decoration:none; }
+
+footer.site-footer {
+  text-align:center;
+  padding:28px 24px 36px;
+  color:#c4c4c8;
+  font-size:11.5px;
+  line-height:1.8;
+  border-top: 1px solid #f5f5f6;
+}
+footer.site-footer .footer-links {
+  margin-bottom:10px;
+}
+footer.site-footer .footer-links a {
+  color:#8e8e93;
+  margin: 0 8px;
+  font-size:12px;
+  font-weight:600;
+}
+footer.site-footer .footer-links a:hover { color:#ff3b5c; }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://phosei5000-hub.github.io/project-builder-lecture/sitemap.xml
