@@ -108,6 +108,18 @@
   @media (min-width: 820px)  { .ranking-list { grid-template-columns: repeat(4, 1fr); } }
   @media (min-width: 1120px) { .ranking-list { grid-template-columns: repeat(5, 1fr); } }
 
+  /* On phones, push the long intro paragraph below the ranking grid so the
+     tabs and #1 item are visible without scrolling past a wall of text. */
+  @media (max-width: 640px) {
+    .app { display:flex; flex-direction:column; }
+    header { order:1; }
+    .tabs { order:2; }
+    main { order:3; }
+    .intro { order:4; margin-top:28px; }
+    .guide { order:5; }
+    footer { order:6; }
+  }
+
   .product-card {
     position: relative;
     display:flex;
