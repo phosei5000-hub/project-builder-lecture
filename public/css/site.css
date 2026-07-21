@@ -29,9 +29,7 @@ a:hover { text-decoration:underline; }
   margin: 0 auto;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:12px;
+  justify-content:center;
 }
 .site-logo {
   font-size: 17px;
@@ -39,18 +37,6 @@ a:hover { text-decoration:underline; }
   color:#1c1c1e;
 }
 .site-logo span { color:#ff3b5c; }
-.site-nav {
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-}
-.site-nav a {
-  color:#6e6e73;
-  font-size:13.5px;
-  font-weight:600;
-}
-.site-nav a:hover { color:#ff3b5c; text-decoration:none; }
-.site-nav a.active { color:#ff3b5c; }
 
 .page-wrap {
   max-width: 760px;
