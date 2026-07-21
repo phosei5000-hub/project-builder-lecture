@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Don Quijote Shopping Rankings | Japan Travel Must-Buy Checklist</title>
+<meta name="description" content="The 100 most popular medicine, beauty, snack, food, and lifestyle items travelers buy at Don Quijote in Japan, ranked by category. Prices, product notes, and tax-free tips in one place.">
+<meta name="keywords" content="Don Quijote, Don Quijote shopping list, Japan travel shopping list, Japan tax-free shopping, Donki must-buy, Japan souvenirs">
+<link rel="canonical" href="https://phosei5000-hub.github.io/project-builder-lecture/en/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Don Quijote Shopping Rankings | Japan Travel Must-Buy Checklist">
+<meta property="og:description" content="Browse the 100 most popular Don Quijote items by category and build your shopping list.">
+<meta property="og:url" content="https://phosei5000-hub.github.io/project-builder-lecture/en/index.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%8D%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+      system-ui, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  }
+  body {
+    background:#ffffff;
+    color:#1c1c1e;
+  }
+
+  .app {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  header {
+    padding: clamp(28px, 5vw, 44px) 24px 20px;
+    text-align:center;
+    border-bottom: 1px solid #f0f0f2;
+  }
+  header h1 {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    color:#1c1c1e;
+    letter-spacing: -0.3px;
+  }
+  header h1 span { color:#ff3b5c; }
+  header p {
+    margin-top:8px;
+    color:#8e8e93;
+    font-size:13.5px;
+    line-height:1.5;
+  }
+
+  .tabs {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap:8px;
+    padding: 16px 20px;
+    position: sticky;
+    top:0;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    z-index:10;
+    border-bottom:1px solid #f0f0f2;
+  }
+  .tab-btn {
+    flex:0 0 auto;
+    padding:9px 16px;
+    border-radius:20px;
+    border:1px solid #ececee;
+    background:#f7f7f8;
+    color:#6e6e73;
+    font-size:13.5px;
+    font-weight:600;
+    cursor:pointer;
+    white-space:nowrap;
+    transition: 0.15s;
+  }
+  .tab-btn:hover { border-color:#ff3b5c; color:#ff3b5c; }
+  .tab-btn.active {
+    background:#fff0f3;
+    color:#ff3b5c;
+    border-color:#ffb9c6;
+  }
+
+  main {
+    padding: 24px 20px 60px;
+  }
+
+  .category-title {
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight:800;
+    margin: 4px 2px 4px;
+    color:#1c1c1e;
+  }
+  .category-sub {
+    font-size:12.5px;
+    color:#a0a0a5;
+    margin: 0 2px 20px;
+  }
+
+  .ranking-list {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (min-width: 520px)  { .ranking-list { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 820px)  { .ranking-list { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 1120px) { .ranking-list { grid-template-columns: repeat(5, 1fr); } }
+
+  .product-card {
+    position: relative;
+    display:flex;
+    flex-direction:column;
+    background:#ffffff;
+    border:1px solid #f0f0f2;
+    border-radius:18px;
+    overflow:hidden;
+    cursor:pointer;
+    transition: 0.15s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+  }
+  .product-card:hover {
+    border-color:#ffd1da;
+    box-shadow: 0 8px 20px rgba(255,59,92,0.10);
+    transform: translateY(-2px);
+  }
+
+  .thumb {
+    width:100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(160deg,#f7f7f8,#f1f1f3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: clamp(42px, 9vw, 64px);
+    overflow:hidden;
+  }
+  .thumb img,
+  .modal-thumb img,
+  .cart-item .thumb img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .rank-badge {
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:13px;
+    background:rgba(255,255,255,0.92);
+    color:#a0a0a5;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .rank-badge.gold   { background:#fff3cd; color:#b8860b; }
+  .rank-badge.silver { background:#eef0f3; color:#7c7f87; }
+  .rank-badge.bronze { background:#fbe4d1; color:#b5651d; }
+
+  .info { padding: 12px 14px 16px; }
+  .info .cat-tag {
+    font-size:11px;
+    font-weight:700;
+    color:#ff3b5c;
+    margin-bottom:4px;
+  }
+  .info .name {
+    font-size:14.5px;
+    font-weight:700;
+    color:#1c1c1e;
+    line-height:1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+    min-height: 2.7em;
+  }
+  .info .price {
+    margin-top:6px;
+    font-size:12.5px;
+    font-weight:700;
+    color:#ff3b5c;
+  }
+
+  footer {
+    text-align:center;
+    padding:24px 24px 32px;
+    color:#c4c4c8;
+    font-size:11.5px;
+    line-height:1.6;
+    border-top: 1px solid #f5f5f6;
+  }
+
+  .modal-backdrop {
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(20,20,22,0.45);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:100;
+  }
+  .modal-backdrop.open { display:flex; }
+
+  .modal {
+    position:relative;
+    width:100%;
+    max-width:400px;
+    max-height:88vh;
+    overflow-y:auto;
+    background:#ffffff;
+    border-radius:22px;
+    padding:28px 24px 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+
+  .modal-close {
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:none;
+    background:#f5f5f7;
+    color:#8e8e93;
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .modal-close:hover { background:#ececee; color:#1c1c1e; }
+
+  .modal-rank {
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    color:#ff3b5c;
+    background:#fff0f3;
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:14px;
+  }
+
+  .modal-thumb {
+    width:120px;
+    height:120px;
+    margin:0 auto 18px;
+    border-radius:20px;
+    background: linear-gradient(160deg,#f7f7f8,#f1f1f3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:64px;
+    overflow:hidden;
+  }
+
+  .modal-name {
+    font-size:19px;
+    font-weight:800;
+    color:#1c1c1e;
+    text-align:center;
+    line-height:1.4;
+  }
+
+  .modal-price {
+    text-align:center;
+    font-size:17px;
+    font-weight:800;
+    color:#ff3b5c;
+    margin-top:8px;
+  }
+
+  .modal-desc {
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid #f0f0f2;
+    font-size:14px;
+    color:#6e6e73;
+    line-height:1.6;
+    text-align:center;
+  }
+
+  /* add-to-cart control inside product modal */
+  .modal-cart-control { margin-top:20px; }
+  .add-cart-btn {
+    width:100%;
+    padding:14px;
+    border-radius:14px;
+    border:none;
+    background:#ff3b5c;
+    color:#fff;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+  }
+  .add-cart-btn:hover { background:#e8264a; }
+
+  .modal-qty-stepper {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+    padding:10px;
+    border-radius:14px;
+    background:#f7f7f8;
+  }
+  .modal-qty-stepper button {
+    width:36px; height:36px; border-radius:50%;
+    border:none; background:#fff; color:#1c1c1e;
+    font-size:18px; font-weight:800; cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,0.1);
+  }
+  .modal-qty-stepper button:hover { color:#ff3b5c; }
+  .modal-qty-stepper .qty-num { font-size:16px; font-weight:800; min-width:24px; text-align:center; }
+  .modal-qty-hint { text-align:center; font-size:12px; color:#a0a0a5; margin-top:8px; }
+
+  /* floating cart button */
+  .cart-fab {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border:none;
+    background:#ff3b5c;
+    color:#fff;
+    font-size:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow: 0 8px 20px rgba(255,59,92,0.35);
+    z-index:90;
+  }
+  .cart-fab:hover { background:#e8264a; }
+
+  .cart-badge {
+    position:absolute;
+    top:-4px;
+    right:-4px;
+    min-width:20px;
+    height:20px;
+    padding:0 5px;
+    border-radius:10px;
+    background:#1c1c1e;
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #fff;
+  }
+
+  /* cart panel */
+  .cart-modal { max-width:440px; }
+  .cart-header { font-size:18px; font-weight:800; margin-bottom:16px; padding-right:26px; }
+  .cart-empty { text-align:center; color:#a0a0a5; font-size:13.5px; padding:50px 10px; }
+
+  .cart-item {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid #f5f5f6;
+  }
+  .cart-item .thumb {
+    width:48px; height:48px; border-radius:12px;
+    background:linear-gradient(160deg,#f7f7f8,#f1f1f3);
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; flex:0 0 auto;
+    overflow:hidden;
+  }
+  .cart-item .info { flex:1; min-width:0; }
+  .cart-item .name {
+    font-size:13.5px; font-weight:700; color:#1c1c1e;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .cart-item .unit-price { font-size:12px; color:#a0a0a5; margin-top:2px; }
+
+  .qty-stepper { display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+  .qty-stepper button {
+    width:26px; height:26px; border-radius:50%;
+    border:1px solid #ececee; background:#f7f7f8; color:#1c1c1e;
+    font-size:14px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .qty-stepper button:hover { border-color:#ff3b5c; color:#ff3b5c; }
+  .qty-stepper .qty-num { min-width:18px; text-align:center; font-size:13.5px; font-weight:700; }
+
+  .cart-item .remove-btn {
+    flex:0 0 auto;
+    background:none; border:none; color:#c4c4c8; font-size:16px; cursor:pointer; padding:4px;
+  }
+  .cart-item .remove-btn:hover { color:#ff3b5c; }
+
+  .cart-footer { margin-top:16px; padding-top:16px; border-top:1px solid #f0f0f2; }
+  .cart-footer .total-row {
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:14px; color:#6e6e73; margin-bottom:4px;
+  }
+  .cart-footer .total-row.price { font-size:16px; font-weight:800; color:#1c1c1e; }
+  .cart-footer .total-row.price span:last-child { color:#ff3b5c; }
+
+  .tax-box {
+    margin-top:12px;
+    padding:12px 14px;
+    border-radius:14px;
+    font-size:12.5px;
+    line-height:1.6;
+  }
+  .tax-box.eligible { background:#fff0f3; color:#8a2a3a; }
+  .tax-box.not-eligible { background:#f7f7f8; color:#6e6e73; }
+  .tax-box .tax-title {
+    font-weight:800;
+    font-size:13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:4px;
+  }
+  .tax-box.eligible .tax-title { color:#ff3b5c; }
+  .tax-box .tax-row {
+    display:flex; justify-content:space-between; margin-top:2px;
+  }
+  .tax-box .tax-row span:last-child { font-weight:700; color:#1c1c1e; }
+  .tax-box .tax-note { margin-top:6px; color:#a0a0a5; font-size:11px; }
+
+  .cart-clear-btn {
+    margin-top:14px;
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #ececee;
+    background:#fff;
+    color:#8e8e93;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .cart-clear-btn:hover { border-color:#ff3b5c; color:#ff3b5c; }
+
+  .intro {
+    max-width: 720px;
+    margin: 20px auto 0;
+    padding: 0 24px;
+    text-align:center;
+    color:#6e6e73;
+    font-size:13.5px;
+    line-height:1.7;
+  }
+
+  /* editorial guide / FAQ section */
+  .guide {
+    max-width: 760px;
+    margin: 12px auto 0;
+    padding: 40px 24px 8px;
+    border-top: 1px solid #f0f0f2;
+  }
+  .guide h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 8px 0 14px;
+    color:#1c1c1e;
+  }
+  .guide h2:first-child { margin-top:0; }
+  .guide h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 22px 0 8px;
+    color:#1c1c1e;
+  }
+  .guide p {
+    font-size: 14px;
+    color:#3c3c43;
+    line-height:1.75;
+    margin-bottom: 12px;
+  }
+  .guide ul {
+    margin: 0 0 14px 20px;
+    font-size: 14px;
+    color:#3c3c43;
+    line-height:1.75;
+  }
+  .guide li { margin-bottom:6px; }
+  .guide-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:14px;
+    margin: 14px 0 24px;
+  }
+  .guide-card {
+    border:1px solid #f0f0f2;
+    border-radius:16px;
+    padding:16px 18px;
+  }
+  .guide-card .emoji { font-size:22px; margin-bottom:6px; display:block; }
+  .guide-card h4 {
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:6px;
+    color:#1c1c1e;
+  }
+  .guide-card p {
+    font-size:13px;
+    color:#6e6e73;
+    margin-bottom:0;
+    line-height:1.6;
+  }
+  .faq-item {
+    border-bottom:1px solid #f5f5f6;
+    padding: 14px 0;
+  }
+  .faq-item:last-child { border-bottom:none; }
+  .faq-item .q {
+    font-size:14.5px;
+    font-weight:700;
+    color:#1c1c1e;
+    margin-bottom:6px;
+  }
+  .faq-item .q::before { content:'Q. '; color:#ff3b5c; }
+  .faq-item .a {
+    font-size:13.5px;
+    color:#6e6e73;
+    line-height:1.7;
+  }
+
+  footer .footer-links {
+    margin-bottom:10px;
+  }
+  footer .footer-links a {
+    color:#8e8e93;
+    margin: 0 8px;
+    font-size:12px;
+    font-weight:600;
+    text-decoration:none;
+  }
+  footer .footer-links a:hover { color:#ff3b5c; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <h1><span>Don Quijote</span> Shopping Rankings</h1>
+    <p>Before your Japan trip, see what travelers actually buy the most<br>broken down by category.</p>
+  </header>
+
+  <p class="intro">
+    We rounded up the 100 Don Quijote items most consistently mentioned across travel media, blogs,
+    and social posts, and sorted them into real popularity order across 5 categories: Medicine,
+    Beauty, Snacks, Food/Alcohol, and Lifestyle. Tap an item for details, and tap the 🛍️ button
+    in the bottom right to save your favorites to a shopping list you can use as a checklist in
+    the store. Scroll down for the full methodology and travel tips.
+  </p>
+
+  <div class="tabs" id="tabs"></div>
+
+  <main>
+    <div class="category-title" id="categoryTitle"></div>
+    <div class="category-sub" id="categorySub"></div>
+    <div class="ranking-list" id="rankingList"></div>
+  </main>
+
+  <section class="guide">
+    <h2>How to plan your Don Quijote shopping run</h2>
+    <p>
+      Don Quijote (ドン・キホーテ) is a chain of large discount variety stores found throughout
+      Japan's major tourist areas — Shinjuku, Shibuya, Osaka's Dotonbori, and more — and most
+      locations stay open late into the night or around the clock. Because the stores are huge and
+      stock everything from medicine to appliances to costumes, first-time visitors can easily lose
+      a big chunk of their trip just hunting for what they came for. Checking this ranking ahead of
+      time and building a shopping list lets you shop efficiently even on a short itinerary.
+    </p>
+
+    <h3>How to get the tax-free discount</h3>
+    <p>
+      Foreign tourists who present a passport can get the 10% consumption tax waived once their
+      combined purchases at one store total 5,000 yen or more (before tax) in a single day. This is
+      handled at a dedicated tax-free counter where you show your passport. General goods
+      (electronics, general merchandise) and consumables (cosmetics, food, medicine, alcohol, etc.)
+      have different combined limits and packaging rules, so it's safest to confirm with staff
+      before checkout. Consumables are sealed in special tax-free packaging, and opening that seal
+      before you leave Japan can void the exemption — so leave it sealed until you're home.
+    </p>
+
+    <h3>What to know, category by category</h3>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <span class="emoji">💊</span>
+        <h4>Medicine & Healthcare</h4>
+        <p>The most popular category, since many of these formulas and ingredients aren't sold
+          back home. If you're heading somewhere with restrictions on certain ingredients, check
+          the label before you fly.</p>
+      </div>
+      <div class="guide-card">
+        <span class="emoji">🧴</span>
+        <h4>Beauty & Skincare</h4>
+        <p>Steady-sellers from Japanese drugstores and roadside shops all in one place. Patch-test
+          new products on your wrist before putting them straight on your face.</p>
+      </div>
+      <div class="guide-card">
+        <span class="emoji">🍫</span>
+        <h4>Snacks & Sweets</h4>
+        <p>The easiest, lowest-pressure gift category. Chocolate doesn't do well in summer heat, so
+          pack an insulated pouch if you're carrying it around during the day.</p>
+      </div>
+      <div class="guide-card">
+        <span class="emoji">🍜</span>
+        <h4>Food, Sauces & Alcohol</h4>
+        <p>Check your home country's duty-free alcohol allowance before you buy multiple bottles,
+          and pack liquids in checked luggage — carrying them on can mean they get confiscated at
+          security.</p>
+      </div>
+      <div class="guide-card">
+        <span class="emoji">🛌</span>
+        <h4>Lifestyle & Self-Care</h4>
+        <p>Leg and eye fatigue relief is especially popular given how much walking a Japan trip
+          involves. These work best used your first night at the hotel or on the flight home.</p>
+      </div>
+    </div>
+
+    <h3>How this ranking was built</h3>
+    <p>
+      Each category's ranking combines how often an item shows up in recommendation posts from
+      travel media (MATCHA, LIVE JAPAN, DiGJAPAN, KKday, Tripstore, and others), how often it comes
+      up in travel blogs and social posts, and whether the product itself is a long-running
+      steady-seller. Prices are based on the single-unit retail price on Amazon Japan
+      (amazon.co.jp) as of July 2026. Actual prices vary by store, location, exchange rate, and
+      season, so treat these as budgeting estimates rather than exact figures. For more on how this
+      site is run, see the <a href="about.html" style="color:#ff3b5c;font-weight:700;">About</a>
+      page.
+    </p>
+
+    <h3>Frequently asked questions</h3>
+    <div class="faq-item">
+      <div class="q">What time is Don Quijote open until?</div>
+      <div class="a">Most city-center stores are open 24 hours or until 2–5am, but hours vary by
+        location, so it's worth checking the specific store's hours before you go.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Can I pay by credit card or mobile payment?</div>
+      <div class="a">Most stores accept foreign-issued credit cards, IC transit cards, and various
+        QR payment apps. A few smaller locations may have limited payment options, so it's worth
+        carrying some cash as a backup.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Is this an official Don Quijote site?</div>
+      <div class="a">No. This is an independent, unofficial reference site with no affiliation or
+        sponsorship from Don Quijote or any related brand. It organizes rankings and prices purely
+        for travelers' reference.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">The price doesn't match what I saw in-store — why?</div>
+      <div class="a">Prices here are reference figures based on Amazon Japan's retail price.
+        Exchange rates, store location, and promotions can all change the in-store price, so please
+        confirm at the register before buying.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">I want to suggest an item that's missing, or report something wrong.</div>
+      <div class="a">Let us know on the <a href="contact.html" style="color:#ff3b5c;font-weight:700;">Contact</a>
+        page and we'll review and update it.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Rankings</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="../index.html">한국어</a>
+    </div>
+    This is an unofficial reference site for travelers; actual store stock and prices may differ.<br>
+    © 2026 Don Quijote Shopping Rankings. All rights reserved.
+  </footer>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-rank" id="modalRank"></div>
+    <div class="modal-thumb" id="modalThumb"></div>
+    <div class="modal-name" id="modalName"></div>
+    <div class="modal-price" id="modalPrice"></div>
+    <div class="modal-desc" id="modalDesc"></div>
+    <div class="modal-cart-control" id="modalCartControl"></div>
+  </div>
+</div>
+
+<button class="cart-fab" id="cartFab" aria-label="Open shopping list">
+  🛍️
+  <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+</button>
+
+<div class="modal-backdrop" id="cartBackdrop">
+  <div class="modal cart-modal">
+    <button class="modal-close" id="cartClose" aria-label="Close">✕</button>
+    <div class="cart-header">🛍️ My Shopping List</div>
+    <div id="cartList"></div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="total-row"><span id="cartTotalCount"></span><span></span></div>
+      <div class="total-row price"><span>Estimated total</span><span id="cartTotalPrice"></span></div>
+      <div id="taxBox"></div>
+      <button class="cart-clear-btn" id="cartClearBtn">Clear shopping list</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Ranked using how often each item appears in travel media, blog, and social
+// mentions of "Don Quijote must-buys," combined across 5 categories (100 items).
+// Prices are the single-unit retail price on Amazon Japan (amazon.co.jp) as of
+// July 2026; they will vary over time and a few PB/niche SKUs are estimated from
+// comparable products.
+const categories = [
+  {
+    id: 'medicine',
+    name: 'Medicine & Healthcare',
+    emoji: '💊',
+    products: [
+      { name: 'Cabagin Kowa Alpha', price: 2160, thumb:'💊', image:'../public/images/kabejinkowaalpha.jpeg', desc:'Made from cabbage-derived ingredients, the undisputed No.1 stomach medicine for repairing the stomach lining' },
+      { name: 'Seirogan Sugar-Coated Tablets', price: 1000, thumb:'💊', image:'../public/images/jungrohan_danguijung.jpeg', desc:'A sugar-coated version that cuts the medicine’s signature smell for easy dosing — a classic remedy for upset stomach and diarrhea' },
+      { name: 'Otaisan', price: 1000, thumb:'🌿', image:'../public/images/otaisan.jpg', desc:'An herbal powder digestive that works great for overeating, bloating, and hangovers' },
+      { name: 'Pabron Gold A', price: 2050, thumb:'🤧', image:'../public/images/pabron_gold_a.jpg', desc:'Japan’s go-to early-stage cold medicine that eases a full range of cold symptoms' },
+      { name: 'EVE Quick DX', price: 1310, thumb:'🤕', image:'../public/images/eve_quick_dx.jpeg', desc:'A fast-absorbing pain reliever travelers keep on hand for headaches and body aches' },
+      { name: 'Salonpas', price: 690, thumb:'🩹', image:'../public/images/syaronpas.jpeg', desc:'Business-card-sized patches that are easy to apply, gentle on skin, and give a cooling relief' },
+      { name: 'Roihi-Tsuboko Coin Patch', price: 920, thumb:'⚪', image:'../public/images/rohichbokodongjunpas.jpeg', desc:'Tiny heat patches you stick right on a specific sore spot' },
+      { name: 'Loxonin S Premium', price: 1010, thumb:'💊', image:'../public/images/rokisonin_s_premium.jpeg', desc:'The go-to high-strength anti-inflammatory painkiller for headaches and menstrual cramps' },
+      { name: 'Ryukakusan Direct', price: 560, thumb:'🍬', image:'../public/images/yonggaksan_direct.jpeg', desc:'A powder throat medicine taken without water, soothing coughs and sore throats (peach flavor is a favorite)' },
+      { name: 'Ukon no Chikara', price: 700, thumb:'🌾', image:'../public/images/ukonnochikara.jpeg', desc:'A stick-type turmeric powder people buy in bulk to fight hangovers before and after drinking' },
+      { name: 'Takeda Alinamin EX Plus', price: 1880, thumb:'💊', image:'../public/images/takeda_alinamin_ex_plus.jpeg', desc:'A high-dose vitamin supplement for chronic fatigue, stiff shoulders, and tired eyes' },
+      { name: 'Sakamukea', price: 700, thumb:'💧', image:'../public/images/sakamukea.jpeg', desc:'A liquid bandage that forms a clear, waterproof coating so cuts don’t sting' },
+      { name: 'Rohto Vita-40 Eye Drops', price: 500, thumb:'👁️', image:'../public/images/roto_bita_40_anyak.jpeg', desc:'Vitamin-enriched eye drops that ease eye strain and redness at a great price' },
+      { name: 'Sante FX Neo', price: 320, thumb:'👁️', image:'../public/images/sante_fx_neo.jpg', desc:'Intensely cooling eye drops that wake your eyes right up' },
+      { name: 'Kobayashi Netsusama Sheet', price: 430, thumb:'🧊', image:'../public/images/gobayasi_nechsamaseat.jpg', desc:'A cooling sheet you stick on your forehead for instant fever relief' },
+      { name: 'Nodonuru Spray', price: 730, thumb:'🗣️', image:'../public/images/nodonuru_spray.jpg', desc:'A targeted antiseptic spray for a scratchy, sore throat' },
+      { name: 'Stopa Tablets', price: 680, thumb:'💊', image:'../public/images/stopa_jung.jpeg', desc:'Tablets that dissolve on your tongue without water — for sudden diarrhea and stomach pain' },
+      { name: 'The Lypo Vitamin C Deep Capsule', price: 3240, thumb:'💊', image:'../public/images/the_lypo_vitaminc_deep_capshul.jpeg', desc:'A liposome-formula vitamin C supplement made for better absorption' },
+      { name: 'Pair Acne Cream', price: 710, thumb:'🩹', image:'../public/images/pair_akne_cream.jpeg', desc:'A gentle ointment that’s effective for calming acne and blemishes' },
+      { name: 'Boufuutsushosan', price: 1100, thumb:'🍵', image:'../public/images/bangpungtongsungsan.jpeg', desc:'A kampo (herbal) supplement that supports fat breakdown and helps with constipation' },
+    ]
+  },
+  {
+    id: 'beauty',
+    name: 'Beauty & Skincare',
+    emoji: '🧴',
+    products: [
+      { name: 'Melano CC Vitamin C Essence', price: 980, thumb:'💧', image:'../public/images/melrano_cc_bitaminc_miyongaek.jpg', desc:'An affordable essence that’s great for treating dark spots, blemishes, and acne marks' },
+      { name: 'Biore UV Aqua Rich Sunscreen', price: 750, thumb:'☀️', image:'../public/images/biore_uv_aqua_rich_suncream.jpg', desc:'A watery sunscreen that spreads on with zero white cast or stickiness' },
+      { name: 'Senka Perfect Whip Original', price: 670, thumb:'🧼', image:'../public/images/senka_perpect_huip_original.jpeg', desc:'The face wash famous for its rich, dense micro-foam' },
+      { name: 'Hada Labo Gokujyun Premium Lotion', price: 790, thumb:'💧', image:'../public/images/hadarabo_gokuzyun_premium_roshun.jpeg', desc:'An essence-level, deeply hydrating toner that’s a staple for dry skin' },
+      { name: 'Keana Nadeshiko Rice Mask', price: 710, thumb:'🌾', image:'../public/images/keananadeniko_ssal_mask.jpg', desc:'A sheet mask made with 100% Japanese rice extract that tightens pores — the No.1 pick among inbound tourists' },
+      { name: 'Heroine Make Long & Curl Mascara', price: 1320, thumb:'👁️', image:'../public/images/hiroinmake_longandkul_maskara.jpeg', desc:'A waterproof mascara with zero smudging that holds its curl all day' },
+      { name: 'd’Alba White Truffle First Spray Serum', price: 2520, thumb:'🍄', image:'../public/images/dalba_whitetruple_firstspray_serum.jpeg', desc:'The mist that regularly tops Don Quijote’s in-store cosmetics awards' },
+      { name: 'Saborino Mega Shot Night Mask', price: 1540, thumb:'🌙', image:'../public/images/saborino_megashyat_night_mask.jpg', desc:'An all-in-one sleeping pack covering toner, lotion, essence, and cream in one sheet' },
+      { name: 'VT Mini Reedle Shot S', price: 2190, thumb:'💉', image:'../public/images/vt_mini_lead_ridle_s.jpeg', desc:'A limited-edition microneedle serum sold exclusively at Don Quijote' },
+      { name: 'Quality 1st Dermarazor Super VC100', price: 770, thumb:'✨', image:'../public/images/qualityfirst_dumaraser_super_vc100.jpeg', desc:'A high-concentration vitamin C mask that once sold out constantly for its spot- and pore-care effect' },
+      { name: 'Lip Fondue (Rohto)', price: 690, thumb:'💋', image:'../public/images/rip_pondu_rotojeyak.jpeg', desc:'A sticky, high-volume lip balm with syrup-like shine and moisture' },
+      { name: 'Sirukotto Cotton Pads', price: 300, thumb:'🧴', image:'../public/images/sirukotto_hwajangsom.jpg', desc:'Famous sponge-structured cotton pads that cut your toner usage in half' },
+      { name: 'Fino Premium Touch Hair Mask', price: 690, thumb:'💇', image:'../public/images/fino_premium_touch_hairmask.jpeg', desc:'The unbeatable-value hair pack that gently repairs damaged hair' },
+      { name: 'Sana Soy Milk Isoflavone Eye Cream', price: 900, thumb:'👁️', image:'../public/images/sana_dooyu_isoplabon_eyecream.jpeg', desc:'A rich soy-milk-based eye cream that’s great for hydration and fine lines' },
+      { name: 'Shinbi Method Derma Serum Bakuchiol', price: 2990, thumb:'🧪', image:'../public/images/sinbi_method_duma_serum_bakuchiol.jpeg', desc:'A gentle, next-gen anti-aging essence you can use morning and night' },
+      { name: 'Momopuri Peach Gel Cream', price: 1320, thumb:'🍑', image:'../public/images/momopuri_boksunga_jell_cream.jpg', desc:'A moisture cream with a fresh peach scent and probiotics that leaves skin plump' },
+      { name: 'Club Suppin Powder', price: 1000, thumb:'✨', image:'../public/images/clubsupin_hwajangsom.jpg', desc:'A bare-face powder safe enough to sleep in, that controls oil and brightens skin' },
+      { name: 'Natural Horse Oil Cream', price: 1750, thumb:'🐴', image:'../public/images/natural_mayucream.jpeg', desc:'An affordable, all-over winter moisturizer people buy in bulk as gifts' },
+      { name: 'Pelican Hip Care Soap', price: 510, thumb:'🧼', image:'../public/images/pelican_hipcare_binoo.jpg', desc:'A dedicated soap that gently scrubs away rough texture and dullness on the hips and body' },
+      { name: 'Fuora Carbonated Toothpaste', price: 400, thumb:'🦷', image:'../public/images/pyuora_tansan_chiyak.jpg', desc:'A toothpaste that fizzes with saliva to help prevent bad breath and gum disease' },
+    ]
+  },
+  {
+    id: 'snack',
+    name: 'Snacks & Sweets',
+    emoji: '🍫',
+    products: [
+      { name: 'Green Tea Kit Kat (Uji Matcha)', price: 560, thumb:'🍵', image:'../public/images/nokcha_kitkat.jpg', desc:'A deep, slightly bitter matcha Kit Kat — the classic Japan-trip gift' },
+      { name: 'Kit Kat Japan Regional Flavors', price: 560, thumb:'🍫', image:'../public/images/kitkat_ilbon_jiyuk_hanjungmat.jpeg', desc:'Sake, Mt. Fuji strawberry cheesecake, and other flavors sold only in Japan' },
+      { name: 'Kororo Gummies', price: 150, thumb:'🍇', image:'../public/images/kororo_jelly.jpg', desc:'Wrapped in a collagen skin that bursts like real fruit when you bite in' },
+      { name: 'Calbee Jagariko', price: 150, thumb:'🥔', image:'../public/images/garubi_jagariko.jpeg', desc:'Crunchy, light, salty sticks that are just as popular as a beer snack' },
+      { name: 'Bourbon Alfort', price: 170, thumb:'🍪', image:'../public/images/burbon_elije.jpg', desc:'The Don Quijote favorite known for its layered, crispy-yet-soft pastry texture' },
+      { name: 'Meiji Takenoko no Sato', price: 230, thumb:'🍄', image:'../public/images/mage_dakenokono_sato.jpeg', desc:'Similar to Kinoko no Yama but with a biscuit balance locals actually prefer' },
+      { name: 'Meiji Kinoko no Yama', price: 200, thumb:'🍄', image:'../public/images/mage_kinokono_yama.jpeg', desc:'The mushroom-shaped chocolate biscuit snack, prized for its crunch' },
+      { name: 'Umaibo Mega Pack', price: 450, thumb:'🌽', image:'../public/images/umaibong_megapack.jpeg', desc:'A mixed-flavor pack that’s perfect for handing out in bulk at school or work' },
+      { name: 'Alfort Chocolate Biscuit', price: 140, thumb:'🍫', image:'../public/images/alpot_chocolate_biscat.jpeg', desc:'Milk chocolate on a whole-wheat biscuit — a classy snack that never disappoints' },
+      { name: 'Funwari Meijin Kinako Mochi', price: 270, thumb:'🍡', image:'../public/images/hunwari_kongaru_mojji.jpeg', desc:'Melts the second it hits your mouth — a soybean-flour rice snack loved by all ages' },
+      { name: 'Calbee Jagapokkuru', price: 160, thumb:'🥔', image:'../public/images/garubi_jyagapokle.jpeg', desc:'A premium potato snack that keeps the taste and crunch of whole potatoes' },
+      { name: 'Morinaga Bake Creamy Cheese', price: 190, thumb:'🧀', image:'../public/images/morinaga_bake_creami_cheese.jpeg', desc:'A baked cheesecake-flavored chocolate, crispy outside and soft inside' },
+      { name: 'Tirol Choco', price: 150, thumb:'🍫', image:'../public/images/tirol_choko.jpeg', desc:'Cute mini chocolates in tiny wrappers, sold in a mix of fun flavors' },
+      { name: 'Hi-Chew Punisyari', price: 150, thumb:'🍬', image:'../public/images/highchu_punisyari.jpeg', desc:'A soft, chewy candy in soda flavors or special Mt. Fuji packaging' },
+      { name: 'Morinaga Milk Caramel', price: 130, thumb:'🍬', image:'../public/images/morinaga_milk_caramel.jpeg', desc:'A rich, deep-flavored original caramel with over 100 years of history — a great gift for elders' },
+      { name: 'Orihiro Konjac Jelly (Pouch)', price: 200, thumb:'🍇', image:'../public/images/orihiro_gonyakjelly.jpeg', desc:'A squeeze-tube jelly, with peach and grape mix being the most popular' },
+      { name: 'Don Quijote Mega Pack Konjac Jelly', price: 350, thumb:'🍡', image:'../public/images/donkihote_megapack_gonyakjelly.jpeg', desc:'Don Quijote’s own brand, known for its huge volume and unbeatable value' },
+      { name: 'Mintia', price: 100, thumb:'❄️', image:'../public/images/mintia.jpeg', desc:'Pocket-sized mints for quick breath care after a meal' },
+      { name: 'Chokotto Puchin Pudding', price: 120, thumb:'🍮', image:'../public/images/chokotto_puchin_puding.jpeg', desc:'Shelf-stable, bite-sized, and individually wrapped — perfect as a small gift' },
+      { name: 'Shiitake Mushroom Snack', price: 200, thumb:'🍄', image:'../public/images/pyogobusut_snack.jpeg', desc:'Whole shiitake mushrooms fried crispy — a savory hit' },
+    ]
+  },
+  {
+    id: 'food',
+    name: 'Food, Sauces & Alcohol',
+    emoji: '🍜',
+    products: [
+      { name: 'Horoyoi (Fruit Chu-Hi)', price: 140, thumb:'🍹', image:'../public/images/horoyoi.jpeg', desc:'A 3%-alcohol fruit drink — peach and Calpis flavors are seasonal favorites' },
+      { name: 'Ichiran Ramen Kit', price: 2000, thumb:'🍜', image:'../public/images/ichiran_ramen_milkit.jpeg', desc:'A boxed kit that recreates the broth and secret sauce of the famous tonkotsu ramen chain' },
+      { name: 'Asahi Super Dry Nama Draft Can', price: 280, thumb:'🍺', image:'../public/images/asahi_super_dry_sangmaekjucan.jpeg', desc:'Fully peel back the lid and you get real draft-style foam — a viral hit' },
+      { name: 'Suntory Kakubin Whisky', price: 2100, thumb:'🥃', image:'../public/images/santori_gakubin_whiski.jpeg', desc:'Less than half the Korean price, popular for highballs and filling out the duty-free allowance' },
+      { name: 'Nissin Cup Noodle Seafood', price: 190, thumb:'🦐', image:'../public/images/nitshin_cupnoodle_seafood.jpg', desc:'A stacked-with-toppings, best-of-both-worlds instant noodle classic' },
+      { name: 'UFO Yakisoba', price: 210, thumb:'🍝', image:'../public/images/ufo_yakisoba.jpeg', desc:'Japan’s signature stir-fried noodle with its tangy-sweet sauce and mayo' },
+      { name: 'Nissin Cup Noodle Curry', price: 190, thumb:'🍛', image:'../public/images/nitshin_cupnoodle_caremat.jpeg', desc:'A rich curry broth that’s great even mixed with rice — a crowd favorite' },
+      { name: 'Golden Curry Roux Block', price: 290, thumb:'🍛', image:'../public/images/golden_curry_gochecare.jpg', desc:'Rich Japanese curry flavor made easy at home with a single cube' },
+      { name: 'Ebara Yakiniku Sauce', price: 280, thumb:'🍖', image:'../public/images/ebara_yakiniqu_tare.jpg', desc:'Great both as a marinade and dipping sauce for grilling beef or pork at home' },
+      { name: 'Mentaiko Mayonnaise (Kewpie)', price: 300, thumb:'🐟', image:'../public/images/mungran_mayonese_quepi.jpeg', desc:'Packed with salty pollock roe — great on toast, rice bowls, or as a dip' },
+      { name: 'Choya Umeshu (Plum Wine)', price: 1210, thumb:'🍇', image:'../public/images/choya_maesilju_umaeshu.jpeg', desc:'Sweet, fragrant plum wine that’s easy to drink on the rocks' },
+      { name: 'Suntory Premium Malt’s', price: 220, thumb:'🍺', image:'../public/images/santori_premium_molts.jpeg', desc:'A smooth foam and deep hop aroma make this a step above other canned beers' },
+      { name: 'Dassai 23 / 39 (Sake)', price: 4000, thumb:'🍶', image:'../public/images/datsai_23.jpeg', desc:'A premium sake you can pick up at a duty-free discount in some Don Quijote stores' },
+      { name: 'Kewpie Mayonnaise (Rich Flavor)', price: 400, thumb:'🥚', image:'../public/images/cyupi_mayonese_gosohanmat.jpeg', desc:'Higher egg-yolk content than Korean mayo, giving it a much richer taste' },
+      { name: 'Donbei Fried Tofu Udon', price: 250, thumb:'🍲', image:'../public/images/donbay_yubooudong.jpg', desc:'A cup udon loaded with a whole sweet, thick piece of fried tofu' },
+      { name: 'Ichiran Ramen Secret Spice Powder', price: 800, thumb:'🌶️', image:'../public/images/ichiran_ramen_bibub_garu.jpeg', desc:'The same spicy red seasoning used in Ichiran shops, sold in its own jar' },
+      { name: 'S&B Rayu (Chili Oil)', price: 160, thumb:'🌶️', image:'../public/images/s_brayu_gochugirlm.jpeg', desc:'A few drops add heat to jjajangmyeon, dumpling dip, or soup dishes' },
+      { name: 'Momoya Rayu (Garlic Chili Oil)', price: 450, thumb:'🧄', image:'../public/images/momoya_rayu_mukneun_gochugirm.jpeg', desc:'Packed with fried garlic and onion bits — great spooned over warm rice' },
+      { name: 'Garlic Sesame Furikake', price: 150, thumb:'🧂', image:'../public/images/chamkemanle_hurikake.jpg', desc:'Garlic and roasted sesame mixed together, addictive on rice, ramen, or meat' },
+      { name: 'Teraoka Egg & Soy Sauce Rice Topping', price: 600, thumb:'🥚', image:'../public/images/teraoka_dalgyalganjangpung_babsauce.jpg', desc:'The addictive soy-egg rice sauce, individually packed for easy storage' },
+    ]
+  },
+  {
+    id: 'lifestyle',
+    name: 'Lifestyle & Self-Care',
+    emoji: '🛌',
+    products: [
+      { name: 'Kyusoku Jikan (Foot Rest Time)', price: 930, thumb:'🦵', image:'../public/images/hyujoksigan.jpg', desc:'A must-have patch for calves and soles that get tired and hot from a walking-heavy trip' },
+      { name: 'MegRhythm Steam Warm Eye Mask', price: 1700, thumb:'😴', image:'../public/images/megurism_jeunggi_onyul_sumyunandae.jpeg', desc:'Releases about 40°C steam when opened, easing eye strain for a great night’s sleep' },
+      { name: 'MegRhythm Steam Warm Neck Patch', price: 1700, thumb:'♨️', image:'../public/images/megurism_onyul_mok_patch.jpeg', desc:'Stick it on the back of your neck before bed for warm steam that loosens tense neck and shoulder muscles' },
+      { name: 'Kyusoku Jikan Acupressure Sole Sheet', price: 600, thumb:'🦶', image:'../public/images/hyujoksigan_jiap_jaguk_seat.jpg', desc:'A sole-only sheet with textured pressure points for extra fatigue relief' },
+      { name: 'Anmerutz Yokoyoko', price: 720, thumb:'💆', image:'../public/images/anmeruch_yokoyoko.jpeg', desc:'A liquid pain reliever you apply mess-free to sore necks, shoulders, and muscles' },
+      { name: 'Dental Pro Interdental Brush', price: 270, thumb:'🦷', image:'../public/images/dentalpro_chiganchitsol.jpg', desc:'A fine, sturdy-bristled brush that’s a top pick for value' },
+      { name: 'Biore Sarasara Powder Sheet', price: 1100, thumb:'💦', image:'../public/images/biore_sarasara_pouder_seat.jpeg', desc:'Wipe-down sheets that leave summer sweat feeling shower-fresh with a nice scent' },
+      { name: 'Roihi-Tsuboko Coin Patch (Cool)', price: 920, thumb:'🧊', image:'../public/images/roihichboko_dongjun_pas_cool_version.jpeg', desc:'The cooling version of the classic warming coin patch' },
+      { name: 'Lenor Happiness Fabric Softener', price: 800, thumb:'🌸', image:'../public/images/renoa_happiness_sumyuyuyunje.jpeg', desc:'A fabric softener with that signature long-lasting, subtly luxurious Japanese scent' },
+      { name: 'Bathclin / Bub Carbonated Bath Salt', price: 630, thumb:'🛁', image:'../public/images/basclean_babu_tansan_ipyokje.jpeg', desc:'Fizzy carbonated bath tablets that boost circulation and melt away travel fatigue' },
+      { name: 'Muhi Patch (Anpanman Bite Patch)', price: 680, thumb:'🦟', image:'../public/images/muhi_patch.jpeg', desc:'A kids’ patch that stops the itch from mosquito or bug bites' },
+      { name: 'Kate Lash Maximizer (Eyelash Curler)', price: 1200, thumb:'👁️', image:'../public/images/kate_rash_maximizer.jpeg', desc:'A high-performance curler that holds your lash curl all day without drooping' },
+      { name: 'Disposable Steam Warm Mask (MegRhythm)', price: 600, thumb:'😷', image:'../public/images/ilhweyong_onyul_mask_megurism.jpeg', desc:'Keeps your neck and nose warm and moist in a dry cabin or hotel room' },
+      { name: 'Ashirira Detox Foot Sheet', price: 1080, thumb:'🎋', image:'../public/images/asirira_suaek_seat.jpg', desc:'A bamboo sap foot patch you wear overnight to help draw out toxins' },
+      { name: 'Kobayashi Glasses Cleaner', price: 410, thumb:'👓', image:'../public/images/gobayasi_jaeyak_angyung_cleaner.jpeg', desc:'Wipes off fingerprints and grease spotlessly and has anti-fog properties' },
+      { name: 'Kao Quickle Wiper', price: 420, thumb:'🧹', image:'../public/images/gao_quikle_wiper.jpeg', desc:'Non-woven cleaning pads that trap dust and hair perfectly' },
+      { name: 'Teeth Whitening Tape', price: 1600, thumb:'😁', image:'../public/images/chiamibaek_tape.jpeg', desc:'A beauty tool that lets you whiten teeth easily at home' },
+      { name: 'Compression Stockings', price: 400, thumb:'🧦', image:'../public/images/apbak_staking.jpeg', desc:'Affordable sleep-compression stockings for people who stand a lot or get swollen legs' },
+      { name: 'SALONIA Comb', price: 990, thumb:'💇', image:'../public/images/salina_bit.jpeg', desc:'A portable comb that adds shine with every stroke and doubles as a gua sha tool' },
+      { name: 'Pigeon Cooling Fever Sheet', price: 420, thumb:'🌡️', image:'../public/images/pijyon_yulnaenggak_seat.jpeg', desc:'A childcare essential that safely cools a sudden fever when stuck on' },
+    ]
+  },
+];
+
+// ---------- image handling ----------
+// Accepts a raw pasted URL (e.g. a Google Drive "share" link) and converts it
+// into a URL that actually loads inside an <img> tag.
+function resolveImageUrl(raw) {
+  if (!raw) return null;
+  const driveFile = raw.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (driveFile) return `https://lh3.googleusercontent.com/d/${driveFile[1]}`;
+  const driveOpen = raw.match(/drive\.google\.com\/open\?id=([^&]+)/);
+  if (driveOpen) return `https://lh3.googleusercontent.com/d/${driveOpen[1]}`;
+  return raw;
+}
+
+function escapeAttr(str) {
+  return String(str).replace(/"/g, '&quot;');
+}
+
+// Builds the inner markup for a thumbnail box: a real <img> if p.image is set
+// (falling back to the emoji if the image fails to load), otherwise the emoji.
+function thumbInner(p) {
+  const url = resolveImageUrl(p.image);
+  const fallback = escapeAttr(p.thumb || '🛍️');
+  if (!url) return p.thumb || '🛍️';
+  return `<img src="${escapeAttr(url)}" alt="${escapeAttr(p.name)}" loading="lazy" data-fallback="${fallback}" onerror="handleImgError(this)">`;
+}
+
+function handleImgError(img) {
+  const container = img.parentElement;
+  if (!container) return;
+  container.textContent = img.dataset.fallback || '🛍️';
+}
+
+const tabsEl = document.getElementById('tabs');
+const titleEl = document.getElementById('categoryTitle');
+const subEl = document.getElementById('categorySub');
+const listEl = document.getElementById('rankingList');
+
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalRank = document.getElementById('modalRank');
+const modalThumb = document.getElementById('modalThumb');
+const modalName = document.getElementById('modalName');
+const modalPrice = document.getElementById('modalPrice');
+const modalDesc = document.getElementById('modalDesc');
+const modalCartControl = document.getElementById('modalCartControl');
+const modalClose = document.getElementById('modalClose');
+
+const cartFab = document.getElementById('cartFab');
+const cartBadge = document.getElementById('cartBadge');
+const cartBackdrop = document.getElementById('cartBackdrop');
+const cartClose = document.getElementById('cartClose');
+const cartList = document.getElementById('cartList');
+const cartFooter = document.getElementById('cartFooter');
+const cartTotalCount = document.getElementById('cartTotalCount');
+const cartTotalPrice = document.getElementById('cartTotalPrice');
+const taxBox = document.getElementById('taxBox');
+const cartClearBtn = document.getElementById('cartClearBtn');
+
+let currentModalKey = null;
+
+// ---------- tax-free helper ----------
+// Japan's tax-free rule for foreign tourists: consumables + general goods
+// combined must total 5,000 yen or more BEFORE tax (10%) at one store, per day.
+// Product prices on this site are tax-included retail prices, so the
+// tax-included cutoff works out to 5,000 * 1.1 = 5,500 yen.
+const TAX_RATE = 0.10;
+const TAX_FREE_MIN_EXCL_TAX = 5000;
+const TAX_FREE_MIN_INCL_TAX = Math.round(TAX_FREE_MIN_EXCL_TAX * (1 + TAX_RATE));
+
+function taxFreeInfo(totalIncludingTax) {
+  const excludingTax = Math.round(totalIncludingTax / (1 + TAX_RATE));
+  const savings = totalIncludingTax - excludingTax;
+  const eligible = totalIncludingTax >= TAX_FREE_MIN_INCL_TAX;
+  const shortBy = Math.max(0, TAX_FREE_MIN_INCL_TAX - totalIncludingTax);
+  return { excludingTax, savings, eligible, shortBy };
+}
+
+// ---------- cart storage ----------
+const CART_KEY = 'donki-cart';
+
+function loadCart() {
+  try {
+    return JSON.parse(localStorage.getItem(CART_KEY)) || {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+let cart = loadCart();
+
+function keyOf(catId, idx) { return `${catId}::${idx}`; }
+
+function getProduct(catId, idx) {
+  const category = categories.find(c => c.id === catId);
+  return { category, product: category.products[idx] };
+}
+
+function getQty(catId, idx) {
+  return cart[keyOf(catId, idx)] || 0;
+}
+
+function setQty(catId, idx, qty) {
+  const key = keyOf(catId, idx);
+  if (qty <= 0) {
+    delete cart[key];
+  } else {
+    cart[key] = qty;
+  }
+  saveCart(cart);
+  renderCartBadge();
+  if (currentModalKey === key) renderModalCartControl(catId, idx);
+  if (cartBackdrop.classList.contains('open')) renderCartPanel();
+}
+
+function cartTotalQty() {
+  return Object.values(cart).reduce((sum, q) => sum + q, 0);
+}
+
+function renderCartBadge() {
+  const total = cartTotalQty();
+  cartBadge.textContent = total;
+  cartBadge.style.display = total > 0 ? 'flex' : 'none';
+}
+
+// ---------- product detail modal ----------
+function renderModalCartControl(catId, idx) {
+  const qty = getQty(catId, idx);
+  if (qty <= 0) {
+    modalCartControl.innerHTML = `<button class="add-cart-btn" id="addCartBtn">🛍️ Add to shopping list</button>`;
+    document.getElementById('addCartBtn').addEventListener('click', () => {
+      setQty(catId, idx, 1);
+    });
+  } else {
+    modalCartControl.innerHTML = `
+      <div class="modal-qty-stepper">
+        <button data-action="dec">−</button>
+        <span class="qty-num">${qty}</span>
+        <button data-action="inc">+</button>
+      </div>
+      <div class="modal-qty-hint">${qty} in your shopping list</div>
+    `;
+    modalCartControl.querySelector('[data-action="dec"]').addEventListener('click', () => setQty(catId, idx, qty - 1));
+    modalCartControl.querySelector('[data-action="inc"]').addEventListener('click', () => setQty(catId, idx, qty + 1));
+  }
+}
+
+function openModal(catId, idx) {
+  const category = categories.find(c => c.id === catId);
+  const p = category.products[idx];
+  const rank = idx + 1;
+
+  currentModalKey = keyOf(catId, idx);
+
+  modalRank.textContent = `${category.emoji} ${category.name} #${rank}`;
+  modalThumb.innerHTML = thumbInner(p);
+  modalName.textContent = p.name;
+  modalPrice.textContent = `¥${p.price.toLocaleString()}`;
+  modalDesc.textContent = p.desc;
+  renderModalCartControl(catId, idx);
+
+  modalBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modalBackdrop.classList.remove('open');
+  currentModalKey = null;
+  if (!cartBackdrop.classList.contains('open')) document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', (e) => {
+  if (e.target === modalBackdrop) closeModal();
+});
+
+listEl.addEventListener('click', (e) => {
+  const card = e.target.closest('.product-card');
+  if (!card) return;
+  openModal(card.dataset.cat, Number(card.dataset.idx));
+});
+
+// ---------- cart panel ----------
+function renderCartPanel() {
+  const keys = Object.keys(cart);
+
+  if (keys.length === 0) {
+    cartList.innerHTML = `<div class="cart-empty">Your shopping list is empty.<br>Tap any item you like to add it!</div>`;
+    cartFooter.style.display = 'none';
+    return;
+  }
+
+  let totalPrice = 0, totalQty = 0;
+
+  cartList.innerHTML = keys.map(key => {
+    const [catId, idxStr] = key.split('::');
+    const idx = Number(idxStr);
+    const { product: p } = getProduct(catId, idx);
+    const qty = cart[key];
+    totalPrice += p.price * qty;
+    totalQty += qty;
+
+    return `
+      <div class="cart-item" data-cat="${catId}" data-idx="${idx}">
+        <div class="thumb">${thumbInner(p)}</div>
+        <div class="info">
+          <div class="name">${p.name}</div>
+          <div class="unit-price">¥${p.price.toLocaleString()}</div>
+        </div>
+        <div class="qty-stepper">
+          <button data-action="dec">−</button>
+          <span class="qty-num">${qty}</span>
+          <button data-action="inc">+</button>
+        </div>
+        <button class="remove-btn" data-action="remove" aria-label="Remove">✕</button>
+      </div>
+    `;
+  }).join('');
+
+  cartTotalCount.textContent = `${totalQty} item${totalQty === 1 ? '' : 's'} added`;
+  cartTotalPrice.textContent = `¥${totalPrice.toLocaleString()}`;
+
+  const tax = taxFreeInfo(totalPrice);
+  if (tax.eligible) {
+    taxBox.innerHTML = `
+      <div class="tax-box eligible">
+        <div class="tax-title"><span>🎉 You qualify for tax-free</span></div>
+        <div class="tax-row"><span>Tax-free price (tax excluded)</span><span>¥${tax.excludingTax.toLocaleString()}</span></div>
+        <div class="tax-row"><span>Consumption tax saved</span><span>¥${tax.savings.toLocaleString()}</span></div>
+        <div class="tax-note">Purchases of ¥${TAX_FREE_MIN_EXCL_TAX.toLocaleString()} or more (before tax) at one store qualify for tax exemption (bring your passport to the store's tax-free counter). Actual eligibility can vary by store and item category.</div>
+      </div>
+    `;
+  } else {
+    taxBox.innerHTML = `
+      <div class="tax-box not-eligible">
+        <div class="tax-title"><span>¥${tax.shortBy.toLocaleString()} more for tax-free</span></div>
+        <div class="tax-note">Spending ¥${TAX_FREE_MIN_EXCL_TAX.toLocaleString()} or more before tax (about ¥${TAX_FREE_MIN_INCL_TAX.toLocaleString()} tax-included) at one store qualifies you for a 10% consumption tax exemption.</div>
+      </div>
+    `;
+  }
+
+  cartFooter.style.display = 'block';
+}
+
+cartList.addEventListener('click', (e) => {
+  const item = e.target.closest('.cart-item');
+  const btn = e.target.closest('button');
+  if (!item || !btn) return;
+  const catId = item.dataset.cat;
+  const idx = Number(item.dataset.idx);
+  const action = btn.dataset.action;
+  const qty = getQty(catId, idx);
+
+  if (action === 'inc') setQty(catId, idx, qty + 1);
+  else if (action === 'dec') setQty(catId, idx, qty - 1);
+  else if (action === 'remove') setQty(catId, idx, 0);
+});
+
+cartClearBtn.addEventListener('click', () => {
+  if (!confirm('Clear your entire shopping list?')) return;
+  cart = {};
+  saveCart(cart);
+  renderCartBadge();
+  renderCartPanel();
+  if (currentModalKey) {
+    const [catId, idxStr] = currentModalKey.split('::');
+    renderModalCartControl(catId, Number(idxStr));
+  }
+});
+
+function openCartPanel() {
+  renderCartPanel();
+  cartBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCartPanel() {
+  cartBackdrop.classList.remove('open');
+  if (!modalBackdrop.classList.contains('open')) document.body.style.overflow = '';
+}
+
+cartFab.addEventListener('click', openCartPanel);
+cartClose.addEventListener('click', closeCartPanel);
+cartBackdrop.addEventListener('click', (e) => {
+  if (e.target === cartBackdrop) closeCartPanel();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if (cartBackdrop.classList.contains('open')) closeCartPanel();
+  else if (modalBackdrop.classList.contains('open')) closeModal();
+});
+
+renderCartBadge();
+
+const ALL_ID = 'all';
+const ALL_META = { id: ALL_ID, name: 'All', emoji: '🏆' };
+
+function getAllRanking() {
+  const maxLen = Math.max(...categories.map(c => c.products.length));
+  const merged = [];
+  for (let round = 0; round < maxLen; round++) {
+    categories.forEach(c => {
+      const p = c.products[round];
+      if (p) merged.push({ p, catId: c.id, catName: c.name, catEmoji: c.emoji, idx: round });
+    });
+  }
+  return merged;
+}
+
+function renderTabs(activeId) {
+  tabsEl.innerHTML = [ALL_META, ...categories].map(c => `
+    <button class="tab-btn ${c.id === activeId ? 'active' : ''}" data-id="${c.id}">
+      ${c.emoji} ${c.name}
+    </button>
+  `).join('');
+
+  tabsEl.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => showCategory(btn.dataset.id));
+  });
+}
+
+function cardHtml(p, catId, idx, rank, catTag) {
+  const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+  return `
+    <div class="product-card" data-cat="${catId}" data-idx="${idx}">
+      <div class="rank-badge ${rankClass}">${rank}</div>
+      <div class="thumb">${thumbInner(p)}</div>
+      <div class="info">
+        ${catTag ? `<div class="cat-tag">${catTag}</div>` : ''}
+        <div class="name">${p.name}</div>
+        <div class="price">¥${p.price.toLocaleString()}</div>
+      </div>
+    </div>
+  `;
+}
+
+function showCategory(id) {
+  if (id === ALL_ID) {
+    const merged = getAllRanking();
+    titleEl.textContent = `${ALL_META.emoji} All Rankings`;
+    subEl.textContent = `${merged.length} items · a combined ranking across every category`;
+
+    listEl.innerHTML = merged.map((item, i) =>
+      cardHtml(item.p, item.catId, item.idx, i + 1, `${item.catEmoji} ${item.catName}`)
+    ).join('');
+
+    renderTabs(id);
+    return;
+  }
+
+  const category = categories.find(c => c.id === id);
+  titleEl.textContent = `${category.emoji} ${category.name} Ranking`;
+  subEl.textContent = `${category.products.length} items · sorted by how often travelers buy them`;
+
+  listEl.innerHTML = category.products.map((p, i) =>
+    cardHtml(p, category.id, i, i + 1, null)
+  ).join('');
+
+  renderTabs(id);
+}
+
+showCategory(ALL_ID);
+</script>
+
+</body>
+</html>
