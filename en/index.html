@@ -108,6 +108,18 @@
   @media (min-width: 820px)  { .ranking-list { grid-template-columns: repeat(4, 1fr); } }
   @media (min-width: 1120px) { .ranking-list { grid-template-columns: repeat(5, 1fr); } }
 
+  /* On phones, push the long intro paragraph below the ranking grid so the
+     tabs and #1 item are visible without scrolling past a wall of text. */
+  @media (max-width: 640px) {
+    .app { display:flex; flex-direction:column; }
+    header { order:1; }
+    .tabs { order:2; }
+    main { order:3; }
+    .intro { order:4; margin-top:28px; }
+    .guide { order:5; }
+    footer { order:6; }
+  }
+
   .product-card {
     position: relative;
     display:flex;
@@ -455,7 +467,7 @@
   .cart-clear-btn:hover { border-color:#ff3b5c; color:#ff3b5c; }
 
   .intro {
-    max-width: 720px;
+    max-width: 1050px;
     margin: 20px auto 0;
     padding: 0 24px;
     text-align:center;
@@ -557,7 +569,7 @@
 <div class="app">
   <header>
     <h1><span>Don Quijote</span> Must-Buy Shopping List</h1>
-    <p>Before your Japan trip, see what travelers actually buy the most<br>broken down by category.</p>
+    <p>Before your Japan trip, see what travelers actually buy the most broken down by category.</p>
   </header>
 
   <p class="intro">
@@ -765,7 +777,7 @@ const categories = [
       { name: 'Biore UV Aqua Rich Sunscreen', price: 750, thumb:'☀️', image:'../public/images/biore_uv_aqua_rich_suncream.jpg', desc:'A watery sunscreen that spreads on with zero white cast or stickiness' },
       { name: 'Senka Perfect Whip Original', price: 670, thumb:'🧼', image:'../public/images/senka_perpect_huip_original.jpeg', desc:'The face wash famous for its rich, dense micro-foam' },
       { name: 'Hada Labo Gokujyun Premium Lotion', price: 790, thumb:'💧', image:'../public/images/hadarabo_gokuzyun_premium_roshun.jpeg', desc:'An essence-level, deeply hydrating toner that’s a staple for dry skin' },
-      { name: 'Keana Nadeshiko Rice Mask', price: 710, thumb:'🌾', image:'../public/images/keananadeniko_ssal_mask.jpg', desc:'A sheet mask made with 100% Japanese rice extract that tightens pores — the No.1 pick among inbound tourists' },
+      { name: 'Keana Nadeshiko Rice Mask Pack', price: 710, thumb:'🌾', image:'../public/images/keananadeniko_ssal_mask.jpg', desc:'A sheet mask made with 100% Japanese rice extract that tightens pores — the No.1 pick among inbound tourists' },
       { name: 'Heroine Make Long & Curl Mascara', price: 1320, thumb:'👁️', image:'../public/images/hiroinmake_longandkul_maskara.jpeg', desc:'A waterproof mascara with zero smudging that holds its curl all day' },
       { name: 'd’Alba White Truffle First Spray Serum', price: 2520, thumb:'🍄', image:'../public/images/dalba_whitetruple_firstspray_serum.jpeg', desc:'The mist that regularly tops Don Quijote’s in-store cosmetics awards' },
       { name: 'Saborino Mega Shot Night Mask', price: 1540, thumb:'🌙', image:'../public/images/saborino_megashyat_night_mask.jpg', desc:'An all-in-one sleeping pack covering toner, lotion, essence, and cream in one sheet' },
@@ -853,13 +865,13 @@ const categories = [
       { name: 'Lenor Happiness Fabric Softener', price: 800, thumb:'🌸', image:'../public/images/renoa_happiness_sumyuyuyunje.jpeg', desc:'A fabric softener with that signature long-lasting, subtly luxurious Japanese scent' },
       { name: 'Bathclin / Bub Carbonated Bath Salt', price: 630, thumb:'🛁', image:'../public/images/basclean_babu_tansan_ipyokje.jpeg', desc:'Fizzy carbonated bath tablets that boost circulation and melt away travel fatigue' },
       { name: 'Muhi Patch (Anpanman Bite Patch)', price: 680, thumb:'🦟', image:'../public/images/muhi_patch.jpeg', desc:'A kids’ patch that stops the itch from mosquito or bug bites' },
-      { name: 'Kate Lash Maximizer (Eyelash Curler)', price: 1200, thumb:'👁️', image:'../public/images/kate_rash_maximizer.jpeg', desc:'A high-performance curler that holds your lash curl all day without drooping' },
+      { name: 'Kate Lash Maximizer', price: 1200, thumb:'👁️', image:'../public/images/kate_rash_maximizer.jpeg', desc:'A high-performance curler that holds your lash curl all day without drooping' },
       { name: 'Disposable Steam Warm Mask (MegRhythm)', price: 600, thumb:'😷', image:'../public/images/ilhweyong_onyul_mask_megurism.jpeg', desc:'Keeps your neck and nose warm and moist in a dry cabin or hotel room' },
       { name: 'Ashirira Detox Foot Sheet', price: 1080, thumb:'🎋', image:'../public/images/asirira_suaek_seat.jpg', desc:'A bamboo sap foot patch you wear overnight to help draw out toxins' },
       { name: 'Kobayashi Glasses Cleaner', price: 410, thumb:'👓', image:'../public/images/gobayasi_jaeyak_angyung_cleaner.jpeg', desc:'Wipes off fingerprints and grease spotlessly and has anti-fog properties' },
       { name: 'Kao Quickle Wiper', price: 420, thumb:'🧹', image:'../public/images/gao_quikle_wiper.jpeg', desc:'Non-woven cleaning pads that trap dust and hair perfectly' },
-      { name: 'Teeth Whitening Tape', price: 1600, thumb:'😁', image:'../public/images/chiamibaek_tape.jpeg', desc:'A beauty tool that lets you whiten teeth easily at home' },
-      { name: 'Compression Stockings', price: 400, thumb:'🧦', image:'../public/images/apbak_staking.jpeg', desc:'Affordable sleep-compression stockings for people who stand a lot or get swollen legs' },
+      { name: 'Smile White Teeth Pack', price: 1600, thumb:'😁', image:'../public/images/chiamibaek_tape.jpeg', desc:'A beauty tool that lets you whiten teeth easily at home' },
+      { name: 'Medi Qtto / Slim Walk', price: 400, thumb:'🧦', image:'../public/images/apbak_staking.jpeg', desc:'Affordable sleep-compression stockings for people who stand a lot or get swollen legs' },
       { name: 'SALONIA Comb', price: 990, thumb:'💇', image:'../public/images/salina_bit.jpeg', desc:'A portable comb that adds shine with every stroke and doubles as a gua sha tool' },
       { name: 'Pigeon Cooling Fever Sheet', price: 420, thumb:'🌡️', image:'../public/images/pijyon_yulnaenggak_seat.jpeg', desc:'A childcare essential that safely cools a sudden fever when stuck on' },
     ]
@@ -898,6 +910,7 @@ function handleImgError(img) {
 }
 
 const tabsEl = document.getElementById('tabs');
+const mainEl = document.querySelector('main');
 const titleEl = document.getElementById('categoryTitle');
 const subEl = document.getElementById('categorySub');
 const listEl = document.getElementById('rankingList');
@@ -1165,16 +1178,120 @@ renderCartBadge();
 const ALL_ID = 'all';
 const ALL_META = { id: ALL_ID, name: 'All', emoji: '🏆' };
 
+// Real-world overall popularity order across every category (researched from
+// travel/shopping guides), used to rank the "All" tab instead of just
+// interleaving each category's own internal order.
+const GLOBAL_POPULARITY_ORDER = [
+  'Cabagin Kowa Alpha',
+  'Melano CC Vitamin C Essence',
+  'Kyusoku Jikan (Foot Rest Time)',
+  'Kororo Gummies',
+  'Keana Nadeshiko Rice Mask Pack',
+  'Salonpas',
+  'Senka Perfect Whip Original',
+  'Seirogan Sugar-Coated Tablets',
+  'Green Tea Kit Kat (Uji Matcha)',
+  'Pabron Gold A',
+  'Biore UV Aqua Rich Sunscreen',
+  'Heroine Make Long & Curl Mascara',
+  'MegRhythm Steam Warm Eye Mask',
+  'Roihi-Tsuboko Coin Patch',
+  'Sirukotto Cotton Pads',
+  'Asahi Super Dry Nama Draft Can',
+  'Ukon no Chikara',
+  'Hada Labo Gokujyun Premium Lotion',
+  'Ichiran Ramen Kit',
+  'Nissin Cup Noodle Seafood',
+  'Kit Kat Japan Regional Flavors',
+  'Ryukakusan Direct',
+  'MegRhythm Steam Warm Neck Patch',
+  'Saborino Mega Shot Night Mask',
+  'Calbee Jagariko',
+  'Morinaga Bake Creamy Cheese',
+  'Suntory Kakubin Whisky',
+  'UFO Yakisoba',
+  'Loxonin S Premium',
+  'd’Alba White Truffle First Spray Serum',
+  'Horoyoi (Fruit Chu-Hi)',
+  'Golden Curry Roux Block',
+  'Dental Pro Interdental Brush',
+  'EVE Quick DX',
+  'Bourbon Alfort',
+  'Otaisan',
+  'Orihiro Konjac Jelly (Pouch)',
+  'Takeda Alinamin EX Plus',
+  'Nissin Cup Noodle Curry',
+  'Kyusoku Jikan Acupressure Sole Sheet',
+  'Umaibo Mega Pack',
+  'Mentaiko Mayonnaise (Kewpie)',
+  'Anmerutz Yokoyoko',
+  'Meiji Takenoko no Sato',
+  'Alfort Chocolate Biscuit',
+  'Meiji Kinoko no Yama',
+  'Kewpie Mayonnaise (Rich Flavor)',
+  'Biore Sarasara Powder Sheet',
+  'Calbee Jagapokkuru',
+  'Choya Umeshu (Plum Wine)',
+  'Roihi-Tsuboko Coin Patch (Cool)',
+  'VT Mini Reedle Shot S',
+  'Tirol Choco',
+  'Ebara Yakiniku Sauce',
+  'Lenor Happiness Fabric Softener',
+  'Rohto Vita-40 Eye Drops',
+  'Quality 1st Dermarazor Super VC100',
+  'Funwari Meijin Kinako Mochi',
+  'Bathclin / Bub Carbonated Bath Salt',
+  'Sante FX Neo',
+  'Lip Fondue (Rohto)',
+  'Muhi Patch (Anpanman Bite Patch)',
+  'Sakamukea',
+  'Suntory Premium Malt’s',
+  'Garlic Sesame Furikake',
+  'Kate Lash Maximizer',
+  'Fino Premium Touch Hair Mask',
+  'Dassai 23 / 39 (Sake)',
+  'Disposable Steam Warm Mask (MegRhythm)',
+  'Sana Soy Milk Isoflavone Eye Cream',
+  'Hi-Chew Punisyari',
+  'Don Quijote Mega Pack Konjac Jelly',
+  'Ashirira Detox Foot Sheet',
+  'Kobayashi Netsusama Sheet',
+  'Shinbi Method Derma Serum Bakuchiol',
+  'Morinaga Milk Caramel',
+  'Donbei Fried Tofu Udon',
+  'Kobayashi Glasses Cleaner',
+  'Nodonuru Spray',
+  'Momopuri Peach Gel Cream',
+  'Ichiran Ramen Secret Spice Powder',
+  'Kao Quickle Wiper',
+  'Stopa Tablets',
+  'Club Suppin Powder',
+  'S&B Rayu (Chili Oil)',
+  'Smile White Teeth Pack',
+  'The Lypo Vitamin C Deep Capsule',
+  'Natural Horse Oil Cream',
+  'Mintia',
+  'Momoya Rayu (Garlic Chili Oil)',
+  'Medi Qtto / Slim Walk',
+  'Pair Acne Cream',
+  'Pelican Hip Care Soap',
+  'Chokotto Puchin Pudding',
+  'SALONIA Comb',
+  'Boufuutsushosan',
+  'Fuora Carbonated Toothpaste',
+  'Shiitake Mushroom Snack',
+  'Teraoka Egg & Soy Sauce Rice Topping',
+  'Pigeon Cooling Fever Sheet'
+];
 function getAllRanking() {
-  const maxLen = Math.max(...categories.map(c => c.products.length));
-  const merged = [];
-  for (let round = 0; round < maxLen; round++) {
-    categories.forEach(c => {
-      const p = c.products[round];
-      if (p) merged.push({ p, catId: c.id, catName: c.name, catEmoji: c.emoji, idx: round });
+  const flat = [];
+  categories.forEach(c => {
+    c.products.forEach((p, idx) => {
+      flat.push({ p, catId: c.id, catName: c.name, catEmoji: c.emoji, idx });
     });
-  }
-  return merged;
+  });
+  flat.sort((a, b) => GLOBAL_POPULARITY_ORDER.indexOf(a.p.name) - GLOBAL_POPULARITY_ORDER.indexOf(b.p.name));
+  return flat;
 }
 
 function renderTabs(activeId) {
@@ -1185,7 +1302,7 @@ function renderTabs(activeId) {
   `).join('');
 
   tabsEl.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => showCategory(btn.dataset.id));
+    btn.addEventListener('click', () => showCategory(btn.dataset.id, { scroll: true }));
   });
 }
 
@@ -1204,7 +1321,7 @@ function cardHtml(p, catId, idx, rank, catTag) {
   `;
 }
 
-function showCategory(id) {
+function showCategory(id, opts = {}) {
   if (id === ALL_ID) {
     const merged = getAllRanking();
     titleEl.textContent = `${ALL_META.emoji} All Rankings`;
@@ -1215,6 +1332,7 @@ function showCategory(id) {
     ).join('');
 
     renderTabs(id);
+    if (opts.scroll) scrollToRanking();
     return;
   }
 
@@ -1227,6 +1345,16 @@ function showCategory(id) {
   ).join('');
 
   renderTabs(id);
+  if (opts.scroll) scrollToRanking();
+}
+
+function scrollToRanking() {
+  // tabsEl is position:sticky, so once scrolled past it, tabsEl.offsetTop
+  // just mirrors the current scroll position instead of reporting its
+  // natural static offset. `main` isn't sticky, so its offsetTop is a real,
+  // stable anchor; subtracting the tab bar's height lands the #1 item right
+  // below it.
+  window.scrollTo({ top: mainEl.offsetTop - tabsEl.offsetHeight, behavior: 'smooth' });
 }
 
 showCategory(ALL_ID);
