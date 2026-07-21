@@ -1226,7 +1226,7 @@ function renderTabs(activeId) {
   `).join('');
 
   tabsEl.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => showCategory(btn.dataset.id));
+    btn.addEventListener('click', () => showCategory(btn.dataset.id, { scroll: true }));
   });
 }
 
@@ -1245,7 +1245,7 @@ function cardHtml(p, catId, idx, rank, catTag) {
   `;
 }
 
-function showCategory(id) {
+function showCategory(id, opts = {}) {
   if (id === ALL_ID) {
     const merged = getAllRanking();
     titleEl.textContent = `${ALL_META.emoji} 전체 랭킹`;
@@ -1256,6 +1256,7 @@ function showCategory(id) {
     ).join('');
 
     renderTabs(id);
+    if (opts.scroll) scrollToRanking();
     return;
   }
 
@@ -1268,6 +1269,11 @@ function showCategory(id) {
   ).join('');
 
   renderTabs(id);
+  if (opts.scroll) scrollToRanking();
+}
+
+function scrollToRanking() {
+  tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 showCategory(ALL_ID);
