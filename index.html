@@ -1378,11 +1378,10 @@ function showCategory(id, opts = {}) {
 }
 
 function scrollToRanking() {
-  // tabsEl is position:sticky, so once it's stuck to the top its
-  // getBoundingClientRect() (and scrollIntoView) already reports top:0 —
-  // making scrollIntoView a no-op when scrolled past it. offsetTop reflects
-  // its static in-flow position instead, so it works from any scroll depth.
-  window.scrollTo({ top: tabsEl.offsetTop, behavior: 'smooth' });
+  // Always scroll all the way to the top of the page, regardless of current
+  // scroll depth. (Scrolling only to the sticky tab bar's position was
+  // fragile across browsers, so just go to the very top instead.)
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 showCategory(ALL_ID);
