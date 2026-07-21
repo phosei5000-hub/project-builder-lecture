@@ -294,7 +294,13 @@
   }
 
   /* add-to-cart control inside product modal */
-  .modal-cart-control { margin-top:20px; }
+  .modal-cta-row {
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+    align-items:stretch;
+  }
+  .modal-cta-row .modal-cart-control { flex:1; min-width:0; margin-top:0; }
   .add-cart-btn {
     width:100%;
     padding:14px;
@@ -307,6 +313,33 @@
     cursor:pointer;
   }
   .add-cart-btn:hover { background:#e8264a; }
+
+  .buy-now-btn {
+    flex:1;
+    min-width:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px;
+    border-radius:14px;
+    border:2px solid #ff3b5c;
+    background:#fff;
+    color:#ff3b5c;
+    font-size:15px;
+    font-weight:800;
+    text-decoration:none;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .buy-now-btn:hover { background:#fff0f3; }
+
+  .affiliate-disclosure {
+    margin-top:10px;
+    text-align:center;
+    font-size:10.5px;
+    color:#a0a0a5;
+    line-height:1.5;
+  }
 
   .modal-qty-stepper {
     display:flex;
@@ -693,7 +726,11 @@
     <div class="modal-name" id="modalName"></div>
     <div class="modal-price" id="modalPrice"></div>
     <div class="modal-desc" id="modalDesc"></div>
-    <div class="modal-cart-control" id="modalCartControl"></div>
+    <div class="modal-cta-row">
+      <div class="modal-cart-control" id="modalCartControl"></div>
+      <a class="buy-now-btn" id="buyNowBtn" href="#" target="_blank" rel="noopener sponsored">바로 구매하기</a>
+    </div>
+    <div class="affiliate-disclosure">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</div>
   </div>
 </div>
 
@@ -904,7 +941,15 @@ const modalName = document.getElementById('modalName');
 const modalPrice = document.getElementById('modalPrice');
 const modalDesc = document.getElementById('modalDesc');
 const modalCartControl = document.getElementById('modalCartControl');
+const buyNowBtn = document.getElementById('buyNowBtn');
 const modalClose = document.getElementById('modalClose');
+
+// Each product can optionally set a `buyUrl` (Coupang Partners link) once one
+// is issued for that item. Until then we fall back to a plain Coupang search
+// for the product name so the button is always useful.
+function resolveBuyUrl(p) {
+  return p.buyUrl || `https://www.coupang.com/np/search?q=${encodeURIComponent(p.name)}`;
+}
 
 const cartFab = document.getElementById('cartFab');
 const cartBadge = document.getElementById('cartBadge');
@@ -1022,6 +1067,7 @@ function openModal(catId, idx) {
   modalPrice.textContent = `¥${p.price.toLocaleString()}`;
   modalDesc.textContent = p.desc;
   renderModalCartControl(catId, idx);
+  buyNowBtn.href = resolveBuyUrl(p);
 
   modalBackdrop.classList.add('open');
   document.body.style.overflow = 'hidden';
